@@ -1,0 +1,22 @@
+.flex{
+    display: flex;
+}
+.justify-centre{
+    justify-content: center;
+}
+.item-centre{
+    align-items: center;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+.flex-col{
+    flex-direction: column;
+}
+.relative{
+    position: relative;
+}
+.shadow{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
