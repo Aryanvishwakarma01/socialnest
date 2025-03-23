@@ -233,7 +233,7 @@ document.querySelectorAll(".menu_item").forEach((item)=>{
 let themebutton=document.getElementById("themebutton")
 themebutton.addEventListener('click',function(){
     document.querySelector(".themecontainer").insertAdjacentHTML("afterbegin",`<div class="themechange">
-        <h2>Customize your view <button onclick="closethemepanel()">X</button></h2>
+        <h2>Customize your view<i onclick="closethemepanel()" class="ri-close-circle-line" style="position: absolute; right:5px; top:5px; "></i></h2>
         <p>Manage your color and background</p>
         <div class="color-options">
             <div class="color" style="background:#6a5acd;" onclick="changeColor('#6a5acd','rgb(126, 114, 204)')"></div>
@@ -265,6 +265,7 @@ function changeBackground(theme) {
         document.documentElement.style.setProperty('--background-body', '#1F1B32');
         document.documentElement.style.setProperty('--menu-item-hover', '#1F1B32');
         document.documentElement.style.setProperty('--main-text', '#FFFFFF');
+        document.documentElement.style.setProperty('--chat-btn', '#000000');
         // document.documentElement.style.setProperty('--hover-btn-color', '#1F1B32');
     } else if (theme === 'black') {
         document.documentElement.style.setProperty('--background-nav', '#110E1B');

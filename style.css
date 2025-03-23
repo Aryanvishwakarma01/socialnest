@@ -16,6 +16,7 @@
     --menu-item-hover:rgb(233, 227, 227);
     --text-color:black;
     --main-text:black;
+    --chat-btn:rgb(196, 195, 195);
 }
 body{
     font-family: "Poppins", sans-serif;
@@ -217,6 +218,12 @@ main .container .left .profile{
 }
 .single-notification{
     gap: 0 8px;
+}
+.single-notification{
+    color:var(--main-text);
+}
+.single-notification p{
+    color:grey;
 }
 .notifications_popup{
     display: none;
@@ -522,10 +529,13 @@ main .container .left .profile{
     cursor: pointer;
     border-radius: 20px;
     transition: background 0.3s;
+    color:var(--main-text);
+
 }
+/* @media (pre)  */
 
 .tab:hover, .tab.active {
-    background: #f0f0f0;
+    background: var(--background-body);
     font-weight: bold;
 }
 
