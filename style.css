@@ -22,31 +22,39 @@ body{
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     background-color: var(--background-body);
+    /* position: relative; */
 }
 
 nav{
     padding: 10px 20px;
-    width: 100vw;
-    /* border: 2px solid black; */
+    width: 100%;
     position: fixed;
     z-index: 100;
-    /* background-color: rgba(125, 9, 179, 0.158); */
     background-color: var(--background-nav);
 }
 nav .container{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 0 auto;
-    width: 100vw;
+    margin: 0 20px;
+    width: 100%;
 }
 .profile_photo img{
     height: 3rem;
     width: 3rem;
     border-radius: 50%;
 }
-.profile .handle{
-    font-size: 12px;
+.menu-btn{
+    display: none;
+    /* border: none; */
+    border:1px solid grey;
+    border-radius: 12px;
+    padding: 0 4px;
+}
+/* set krle isko khud mai call pe huok */
+.menu-btn i{
+    font-size: 20px;
+
 }
 .logo{
     display: flex;
@@ -60,13 +68,13 @@ nav .container{
     border-radius: 25px;
     padding: 8px 30px;
     background-color: var(--background-body);
-    
+    width: 400px;
 }
 .search_bar input{
     padding: 5px;
     color:var(--main-text);
     background-color: var(--background-body);
-    width: 30vw;
+    width: 100%;
     height: 30px;
     outline: none;
     border: none;
@@ -78,9 +86,29 @@ nav .container{
     outline: none;
     border: none;
 }
-.heading{
-    font-weight: 100;
+@media screen and (max-width:430px){
+    .search_bar{
+        width: 150px;
+        padding: 2px 5px;
+    }
+    .heading>h2{
+        width: max-content;
+        font-size:1rem;
+        padding: 0;
+        margin: 0;
+    }
+    .menu-btn{
+        display: inline-block;
+    }
 }
+.heading{
+    font-size: 1rem;
+    font-weight: 100;
+    max-width:  20%;
+    display: flex;
+    gap:10px;
+}
+
 .btn{   
     border-radius:20px;
     background-color: var(--btn-color);
@@ -102,27 +130,37 @@ main{
 }    
 main .container{
     display: flex;
-    column-gap: 1.5rem;
+    /* column-gap: 0.1rem; */
     /* grid-template-columns: 300px auto 20vw; */
-    padding: 0 100px;
+    padding: 0 150px;
     position: relative;
+    justify-content: space-around;
     /* border: 2px solid black; */
-    width: 100%;
+    width: 100%;    
 }
 .heading{
     color:var(--main-text);
+}
+.profile .handle{
+    font-size: 12px;
 }
 main .container .left{
     /* height: 90vh; */
     position:sticky;
     top:5.4rem;
-    min-width: 250px;
+    max-width: 250px;
     margin-left: 20px;
     /* border: 2px solid black; */
     display: flex;
     flex-direction: column;
+    /* transform: translate(-100%, -50%); */
+    /* transition: transform 0.8s ease-in-out; */
 }
-
+.slide-in{
+    transform: translate(0, -3%);
+    transition:all 5s ease-in;
+    transition-delay: 2s;
+}
 main .container .left .profile{
  padding:12px 12px;
  background-color: var(--background-nav);
@@ -170,11 +208,13 @@ main .container .left .profile{
     /* border-radius: 20px; */
     box-sizing: border-box;
     gap:2px;
+    /* border-radius: 20px; */
     cursor:pointer;
     align-items: center;
     transition:all 300ms ease;
     position: relative;
 }
+
 .left .sidebar .menu_item:hover{
     background-color:var(--menu-item-hover);
 }
@@ -265,6 +305,51 @@ main .container .left .profile{
     color:white;
     font-weight: 500;
 }
+@media screen and (max-width:430px){
+    main .container{
+        padding: 10px;
+        gap:15px;
+    }
+    .left .sidebar i{
+        /* margin-left: 0; */
+    }
+    main .container .left{
+        margin-left:2px;
+        display: none;
+    }
+    main .container .left .profile{
+        display: none;
+    }
+    /* .themechange{
+        padding: 5px;
+        width: 300px;
+    } */
+
+    main .container .left .sidebar{
+        /* width: 30%; */
+        /* border-radius: 20px; */
+        /* border: 1px solid grey; */
+        /* overflow: hidden; */
+        box-shadow: 5px 5px 10px black;
+    }
+    main .container .left .sidebar .menu_item{
+        padding: 12px 10px;
+        /* border-radius: 20px; */
+    }
+    main .container .left .sidebar .menu_item h3{
+        /* display:none; */
+    }
+    main .container .left .sidebar .menu_item span{
+        /* padding: 0px; */
+        /* margin: 0px; */
+    }
+    .btm-create{
+        display: none;
+    }
+    .right{
+        display: none;
+    }
+}
 .middle{
     width: 500px;
     display: flex;
@@ -295,6 +380,26 @@ main .container .left .profile{
     /* box-shadow: 3px 5px 12px grey; */
     border-radius: 1rem;
     overflow: hidden;
+    cursor: pointer;
+}
+.story::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to bottom, transparent, rgb(0, 0, 0));
+    z-index: 1;
+}
+.middle .stories-container .story p{
+    position:absolute;
+    z-index: 2;
+    bottom: 10%;
+    width: 100%;
+    text-align: center;
+    color:white;
+    font-weight: 300;
+    font-size: 0.8rem;
 }
 ::-webkit-scrollbar{
     display: none;
@@ -318,6 +423,27 @@ main .container .left .profile{
     height: 100%;
     object-fit: cover;
 
+}
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8); /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Full-screen image */
+.fullscreen img {
+    width: 40vw;  /* Set 9:16 aspect ratio */
+    height: 70vh;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.5s ease-in-out;
 }
 .story .storyprofile{
     position: absolute;
@@ -348,6 +474,7 @@ main .container .left .profile{
     /* border-radius: 25px; */
     padding: 4px 12px;
     justify-content: center;
+    width: 100%;
     background-color: var(--background-nav);
     
 }
@@ -485,7 +612,8 @@ main .container .left .profile{
 
 /* design of messages panel */
 .messages-panel {
-    width: 22vw;
+    /* width: 22vw; */
+    max-width: 280px;
     background: var(--background-nav);
     padding: 15px;
     margin-top: 10px;
@@ -538,7 +666,9 @@ main .container .left .profile{
     background: var(--background-body);
     font-weight: bold;
 }
-
+.requests-panel{
+    max-width: 280px;
+}
 .requests {
     color: #007bff;
     font-weight: bold;

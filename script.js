@@ -6,17 +6,41 @@ window.addEventListener("load", function() {
     });
 });
 
+function story_open(){
+    let img = document.getElementById("storypic");
+            
+            // Add expanded class
+            img.classList.add("expanded");
+
+            // Remove expanded class after 5 seconds
+            setTimeout(() => {
+                img.classList.remove("expanded");
+            }, 5000);
+}
+
+
+
 let stories = document.querySelector(".stories")
 
 for (let i = 1; i <= 25; i++) {
-    stories.innerHTML += `
+    const foreignNames = [
+        "Alejandro", "Sofia", "Matteo", "Isla", "Léon", "Freja", "Hugo", "Emilia", "Luca", "Anya",
+        "Dmitri", "Yuki", "Hana", "Kai", "Amélie", "Sven", "Elina", "Felix", "Ines", "Rafaela",
+        "Nikolai", "Ximena", "Thiago", "Mira", "Tobias", "Ivana", "Zoran", "Selma", "Otto", "Elio"
+    ];
+        stories.innerHTML += `
     <div class="story">
-                        <img class="storypic" src="https://images.pexels.com/photos/${415828 + i}/pexels-photo-${415828 + i}.jpeg?auto=compress&cs=tinysrgb&w=300
+                        <img onclick="story_open()" class="storypic" src="https://images.pexels.com/photos/${415828 + i}/pexels-photo-${415828 + i}.jpeg?auto=compress&cs=tinysrgb&w=300
 " alt="">
                         <img class="storyprofile" src="images/profile-${i % 20 + 1}.jpg" alt="">
+                        <p>${i==1 ? "Your Story" : foreignNames[i]}</p>
          </div> 
     `
+    
 }
+
+
+
 
 document.querySelector(".stories-container button").addEventListener("click", () => {
     document.querySelector(".stories").scrollBy({
@@ -271,4 +295,38 @@ function changeBackground(theme) {
         document.documentElement.style.setProperty('--background-nav', '#110E1B');
         document.documentElement.style.setProperty('--background-body', '#000000');
     }
+}
+function showMenu(){
+let left=document.querySelector(".left")
+if(left.style.display=="flex"){
+    left.style.display="none"
+}else if(left.style.display="none"){
+left.style.display="flex"
+}
+left.style.position="absolute"
+left.style.zIndex="1100"
+left.style.top="-15px"
+left.style.left="2%"
+left.classList.add("slide-in")
+}
+
+function story_open(){
+    let imgSrc = document.getElementsByClassName("storyphoto").src;
+
+    // Create full-screen overlay
+    let fullscreenDiv = document.createElement("div");
+    fullscreenDiv.classList.add("fullscreen");
+
+    // Create image inside overlay
+    let fullScreenImg = document.createElement("img");
+    fullScreenImg.src = imgSrc;
+
+    // Append image to overlay
+    fullscreenDiv.appendChild(fullScreenImg);
+    document.body.appendChild(fullscreenDiv);
+
+    // Close after 5 seconds
+    setTimeout(() => {
+        fullscreenDiv.remove();
+    }, 2000);
 }
