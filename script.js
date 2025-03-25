@@ -1,21 +1,21 @@
 // Retrieve and display posts on page load
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     let savedPosts = JSON.parse(localStorage.getItem("posts")) || [];
     savedPosts.forEach(post => {
         document.querySelector(".posts").insertAdjacentHTML("afterbegin", post);
     });
 });
 
-function story_open(){
+function story_open() {
     let img = document.getElementById("storypic");
-            
-            // Add expanded class
-            img.classList.add("expanded");
 
-            // Remove expanded class after 5 seconds
-            setTimeout(() => {
-                img.classList.remove("expanded");
-            }, 5000);
+    // Add expanded class
+    img.classList.add("expanded");
+
+    // Remove expanded class after 5 seconds
+    setTimeout(() => {
+        img.classList.remove("expanded");
+    }, 5000);
 }
 
 
@@ -28,15 +28,15 @@ for (let i = 1; i <= 25; i++) {
         "Dmitri", "Yuki", "Hana", "Kai", "Amélie", "Sven", "Elina", "Felix", "Ines", "Rafaela",
         "Nikolai", "Ximena", "Thiago", "Mira", "Tobias", "Ivana", "Zoran", "Selma", "Otto", "Elio"
     ];
-        stories.innerHTML += `
+    stories.innerHTML += `
     <div class="story">
                         <img onclick="story_open()" class="storypic" src="https://images.pexels.com/photos/${415828 + i}/pexels-photo-${415828 + i}.jpeg?auto=compress&cs=tinysrgb&w=300
 " alt="">
                         <img class="storyprofile" src="images/profile-${i % 20 + 1}.jpg" alt="">
-                        <p>${i==1 ? "Your Story" : foreignNames[i]}</p>
+                        <p>${i == 1 ? "Your Story" : foreignNames[i]}</p>
          </div> 
     `
-    
+
 }
 
 
@@ -88,18 +88,18 @@ document.querySelectorAll('.menu_item').forEach(tab => {
 
 
 // to add friend requests in request list
-let requests=document.querySelector(".request-list")
+let requests = document.querySelector(".request-list")
 
-const req=[{profile:"images/profile-5.jpg",name:"Deepika"},
-    {profile:"images/profile-6.jpg",name:"Vandana"},
-    {profile:"images/profile-7.jpg",name:"Priyanka"},
-    {profile:"images/profile-8.jpg",name:"Alen"}
+const req = [{ profile: "images/profile-5.jpg", name: "Deepika" },
+{ profile: "images/profile-6.jpg", name: "Vandana" },
+{ profile: "images/profile-7.jpg", name: "Priyanka" },
+{ profile: "images/profile-8.jpg", name: "Alen" }
 ]
 
-function addRequests(){
-    let clutter="";
-req.forEach(function(obj){
-    clutter+=`<div class="request-item flex flex-col">
+function addRequests() {
+    let clutter = "";
+    req.forEach(function (obj) {
+        clutter += `<div class="request-item flex flex-col">
                 <div class="request-info flex">
                 <img src="${obj.profile}" alt="User 1">
                     <div class="request-name"><h4>${obj.name}</h4>
@@ -111,9 +111,9 @@ req.forEach(function(obj){
                     <button class="decline">Decline</button>
                 </div>
             </div>`;
-            requests.innerHTML=clutter;
+        requests.innerHTML = clutter;
 
-})
+    })
 }
 addRequests()
 
@@ -132,22 +132,18 @@ document.querySelectorAll('.decline').forEach(button => {
     });
 });
 
-document.getElementById('fileInput').addEventListener('change', function(event) {
-    let file = event.target.files[0];
-    // if (file) {
-    //     alert(`Selected file: ${file.name}`);
-    // }
-});
 
 let selectedImage = null;
 
 // When an image is selected
-document.getElementById("fileInput").addEventListener("change", function(event) {
+document.getElementById("fileInput").addEventListener("change", function (event) {
     let file = event.target.files[0];
+
+    document.querySelector("#uploadpostimg p").innerText = file.name;
 
     if (file) {
         let reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             selectedImage = e.target.result;
             document.getElementById("imagePreview").src = selectedImage;
             document.getElementById("imagePreview").style.display = "block";
@@ -157,20 +153,21 @@ document.getElementById("fileInput").addEventListener("change", function(event) 
     }
 });
 
-const handleFileInput = () => {document.getElementById('fileInput').click()
+const handleFileInput = () => {
+    document.getElementById('fileInput').click()
 }
 
-let profileElement=document.getElementById("profilephoto")
-let imgSrc=profileElement.src
+let profileElement = document.getElementById("profilephoto")
+let imgSrc = profileElement.src
 
-let profileNameElement=document.getElementById("profilename")    
-let profileName=profileNameElement.innerText
+let profileNameElement = document.getElementById("profilename")
+let profileName = profileNameElement.innerText
 
 
 // When the post button is clicked
-document.getElementById("newpost").addEventListener("click", function() {
+document.getElementById("newpost").addEventListener("click", function () {
     if (!selectedImage) return;
-    
+
     const countries = [
         "India", "United States", "Canada", "United Kingdom", "Australia",
         "Germany", "France", "Italy", "Spain", "Brazil",
@@ -178,10 +175,10 @@ document.getElementById("newpost").addEventListener("click", function() {
         "Argentina", "Saudi Arabia", "South Korea", "Netherlands", "Sweden"
     ];
 
-    const caption = document.getElementById("post-caption").value;
+    const caption = document.getElementById("post-caption");
     let postHtml = `
         <div class="post">
-            <div class="postby flex space-between">
+            <div class="postby ">
                 <div class="postnavleft item-centre flex">
                     <div class="post-profile ">
                         <img src="${imgSrc}" alt="">
@@ -219,7 +216,7 @@ document.getElementById("newpost").addEventListener("click", function() {
                 </p>
             </div>
             <div class="postdescription">
-                <p>${caption}</p>
+                <p>${caption.value}</p>
                 <p style="color: grey;">View all 265 comments</p>
             </div>
         </div>
@@ -236,6 +233,7 @@ document.getElementById("newpost").addEventListener("click", function() {
 
     // Reset selected image
     selectedImage = null;
+    caption.value = null;
     document.getElementById("imagePreview").style.display = "none";
     document.getElementById("fileInput").value = null;
     document.getElementById("postButton").disabled = true;
@@ -245,18 +243,18 @@ document.getElementById("newpost").addEventListener("click", function() {
 
 
 
-function closethemepanel(){
+function closethemepanel() {
     document.querySelector(".themecontainer").innerHTML = ""
 }
-document.querySelectorAll(".menu_item").forEach((item)=>{
-    item.addEventListener("click" , (e) => {
+document.querySelectorAll(".menu_item").forEach((item) => {
+    item.addEventListener("click", (e) => {
         closethemepanel()
     })
 })
 // selecting theme button
-let themebutton=document.getElementById("themebutton")
-themebutton.addEventListener('click',function(){
-    document.querySelector(".themecontainer").insertAdjacentHTML("afterbegin",`<div class="themechange">
+let themebutton = document.getElementById("themebutton")
+themebutton.addEventListener('click', function () {
+    document.querySelector(".themecontainer").insertAdjacentHTML("afterbegin", `<div class="themechange">
         <h2>Customize your view<i onclick="closethemepanel()" class="ri-close-circle-line" style="position: absolute; right:5px; top:5px; "></i></h2>
         <p>Manage your color and background</p>
         <div class="color-options">
@@ -277,7 +275,7 @@ themebutton.addEventListener('click',function(){
 })
 
 // theme change settings
-function changeColor(color,hovercolor) {
+function changeColor(color, hovercolor) {
     document.documentElement.style.setProperty('--btn-color', color);
     document.documentElement.style.setProperty('--hover-btn-color', hovercolor);
 }
@@ -296,21 +294,18 @@ function changeBackground(theme) {
         document.documentElement.style.setProperty('--background-body', '#000000');
     }
 }
-function showMenu(){
-let left=document.querySelector(".left")
-if(left.style.display=="flex"){
-    left.style.display="none"
-}else if(left.style.display="none"){
-left.style.display="flex"
-}
-left.style.position="absolute"
-left.style.zIndex="1100"
-left.style.top="-15px"
-left.style.left="2%"
-left.classList.add("slide-in")
+function showMenu() {
+    let left = document.querySelector(".left");
+    left.classList.toggle("show")
+
+    if (!left.classList.contains("show")) {
+        left.style.left = "-105%"
+    } else {
+        left.style.left = "0%"
+    }
 }
 
-function story_open(){
+function story_open() {
     let imgSrc = document.getElementsByClassName("storyphoto").src;
 
     // Create full-screen overlay

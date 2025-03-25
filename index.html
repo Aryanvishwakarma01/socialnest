@@ -10,8 +10,9 @@
     <link rel="shortcut icon" href="fav.png" type="image/x-icon">
     <link rel="stylesheet" href="util.css">
 
-    
+
 </head>
+
 <body>
     <!-- hello -->
     <!-- themechange -->
@@ -30,7 +31,7 @@
                 <input type="search" placeholder="Search of Creators, Inspirations and Projects">
             </div>
             <div class="logo">
-                <label class="btn" for="create-post ">Create</label>
+                <button class="btn" for="create-post ">Create</button>
                 <div class="profile_photo">
                     <img src="profile.png" alt="">
                 </div>
@@ -63,12 +64,13 @@
                     <a class="menu_item relative" id="notifications">
                         <span><i class="ri-notification-line"><small class="notification-count">9+</small></i></span>
                         <h3>Notifications</h3>
-                    
+
                         <!-- notification group -->
                         <div class="notifications_popup shadow ">
                             <div class="flex single-notification">
                                 <div class="profile_photo">
-                                    <img src="https://media.licdn.com/dms/image/v2/D5603AQE-pSKaa--KBQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1727273849266?e=1748476800&v=beta&t=x88ltetAFJfm96eOYuTGbynVKa-ayl-cWYihS8bRakg" alt="">
+                                    <img src="https://media.licdn.com/dms/image/v2/D5603AQE-pSKaa--KBQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1727273849266?e=1748476800&v=beta&t=x88ltetAFJfm96eOYuTGbynVKa-ayl-cWYihS8bRakg"
+                                        alt="">
                                 </div>
                                 <div class="notification_body">
                                     <b>Kamal Thakur</b> accepted your follow request
@@ -86,7 +88,8 @@
                             </div>
                             <div class="flex single-notification">
                                 <div class="profile_photo">
-                                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQFsTjZVhtn8wA/profile-displayphoto-shrink_200_200/B4DZSh.zvZG8Ac-/0/1737884385046?e=1748476800&v=beta&t=_0IeQjAhthKqzNf-N_VV6A6J8k5Y-pSy9XnRLgz5fZg" alt="">
+                                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQFsTjZVhtn8wA/profile-displayphoto-shrink_200_200/B4DZSh.zvZG8Ac-/0/1737884385046?e=1748476800&v=beta&t=_0IeQjAhthKqzNf-N_VV6A6J8k5Y-pSy9XnRLgz5fZg"
+                                        alt="">
                                 </div>
                                 <div class="notification_body">
                                     <b>Abhishek Kumar</b> and <b>50 others</b> liked your post
@@ -134,33 +137,37 @@
             <div class="middle">
                 <div class="stories-container">
                     <div class="stories"></div>
-                    
+
                     <button><i class="ri-arrow-right-line"></i></button>
                 </div>
-            
+
 
                 <!-- do Post -->
-                 
+
                 <div class="dopost">
-                    
+
                     <div class="search_bar">
                         <div class="profile_photo">
                             <img src="profile.png" alt="">
                         </div>
                         <input type="search" id="post-caption" placeholder="What's on your mind, Aryan?">
                         <div class="logo">
-                            <button type="submit" class="btn" id="newpost" for="create-post " style="border: none;padding:5px 15px;">Post</button>
+                            <button type="submit" class="btn" id="newpost" for="create-post"
+                                style="border: none;padding:5px 15px;">Post</button>
                         </div>
                     </div>
                     <div class="uploadpost">
                         <!-- Hidden file input -->
-                         
-    <input type="file" id="fileInput" accept="image/*">
-    <div onclick="handleFileInput()" style="cursor: pointer;font-size: 0.8rem;"><i style="color:green"; class="ri-image-add-line"></i> Add photo</div>
 
-    <!-- Custom button -->
-    <!-- <label for="fileInput" class="custom-button">Select Image</label> -->
-                    
+                        <input type="file" id="fileInput" accept="image/*">
+                        <div class="flex item-centre" id="uploadpostimg" onclick="handleFileInput()" style="cursor: pointer;font-size: 0.8rem; gap: 4px;">
+                            <i style="color:green" ; class="ri-image-add-line"></i> Add photo
+                            <p></p>
+                        </div>
+
+                        <!-- Custom button -->
+                        <!-- <label for="fileInput" class="custom-button">Select Image</label> -->
+
                     </div>
                 </div>
 
@@ -214,7 +221,7 @@
 
                     <!-- post 2 -->
                     <div class="post flex flex-col">
-                        <div class="postby flex space-between">
+                        <div class="postby ">
                             <div class="postnavleft item-centre flex">
                                 <div class="post-profile ">
                                     <img src="images/profile-3.jpg" alt="">
