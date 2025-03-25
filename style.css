@@ -34,10 +34,12 @@ nav{
 }
 nav .container{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    margin: 0 20px;
-    width: 100%;
+    /* width: 8%; */
+    /* margin: 0 20px; */
+    width: 80%;
+    margin: auto;
 }
 .profile_photo img{
     height: 3rem;
@@ -54,12 +56,14 @@ nav .container{
 /* set krle isko khud mai call pe huok */
 .menu-btn i{
     font-size: 20px;
-
 }
 .logo{
     display: flex;
     gap:30px;
     align-items: center;
+}
+.logo>button{
+    border: none;
 }
 .search_bar{
     display: flex;
@@ -68,7 +72,7 @@ nav .container{
     border-radius: 25px;
     padding: 8px 30px;
     background-color: var(--background-body);
-    width: 400px;
+    width: 50%;
 }
 .search_bar input{
     padding: 5px;
@@ -100,11 +104,18 @@ nav .container{
     .menu-btn{
         display: inline-block;
     }
+    nav .logo>button{
+        display: none;
+    }
+    nav .container{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
 }
 .heading{
     font-size: 1rem;
     font-weight: 100;
-    max-width:  20%;
     display: flex;
     gap:10px;
 }
@@ -132,9 +143,10 @@ main .container{
     display: flex;
     /* column-gap: 0.1rem; */
     /* grid-template-columns: 300px auto 20vw; */
-    padding: 0 150px;
+    padding: 0 100px;
     position: relative;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 0 20px;
     /* border: 2px solid black; */
     width: 100%;    
 }
@@ -146,15 +158,23 @@ main .container{
 }
 main .container .left{
     /* height: 90vh; */
-    position:sticky;
-    top:5.4rem;
-    max-width: 250px;
+    /* position:sticky; */
+    top: 5.4rem;
+    width: 25%;
+    min-width: 250px;
     margin-left: 20px;
     /* border: 2px solid black; */
     display: flex;
     flex-direction: column;
     /* transform: translate(-100%, -50%); */
     /* transition: transform 0.8s ease-in-out; */
+}
+main .container .middle{
+    width: 50%;
+    /* min-width: 500px; */
+}
+main .container .right{
+    width: calc(max(250px, 25%));
 }
 .slide-in{
     transform: translate(0, -3%);
@@ -307,15 +327,28 @@ main .container .left .profile{
 }
 @media screen and (max-width:430px){
     main .container{
-        padding: 10px;
+        padding: 0px;
         gap:15px;
+        width: 100%;
     }
     .left .sidebar i{
         /* margin-left: 0; */
     }
     main .container .left{
-        margin-left:2px;
-        display: none;
+        position: absolute;
+        top: -30px;
+        left: -105%;
+        height: 100vh;
+        /* border-radius: 0; */
+        padding: 0;
+        z-index: 100;
+        margin-left:0px;
+        /* display: none; */
+        transition: all 0.3s ease-in-out;
+    }
+    main .container .middle{
+        width: 100%;
+        margin-left: 0;
     }
     main .container .left .profile{
         display: none;
@@ -327,10 +360,11 @@ main .container .left .profile{
 
     main .container .left .sidebar{
         /* width: 30%; */
-        /* border-radius: 20px; */
+        border-radius: 0;
+        height: 100vh;
         /* border: 1px solid grey; */
         /* overflow: hidden; */
-        box-shadow: 5px 5px 10px black;
+        /* box-shadow: 5px 5px 10px black; */
     }
     main .container .left .sidebar .menu_item{
         padding: 12px 10px;
@@ -351,7 +385,7 @@ main .container .left .profile{
     }
 }
 .middle{
-    width: 500px;
+    /* width: 50%; */
     display: flex;
     flex-direction: column;
 }
@@ -361,7 +395,8 @@ main .container .left .profile{
 }
 .middle .stories{
     height: 220px;
-    max-width: 500px;
+    width: 100%;
+    /* max-width: 500px; */
     display: flex;
     flex-wrap: inherit;
     overflow-x: auto;
@@ -481,6 +516,12 @@ main .container .left .profile{
 .dopost #fileInput{
     display: none;
 }
+#uploadpostimg p{
+    font-size: 16px ;
+    color: gray;
+    margin-left: 4px;
+    font-weight: 500;
+}
 .dopost .search_bar input{
     padding: 0 2px;
     color:rgb(0, 0, 0);
@@ -540,6 +581,14 @@ main .container .left .profile{
 }
 .postby{
     padding: 6px 0;
+    display: flex;
+    justify-content: space-between;
+
+}
+.postby .right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 .post-profile {
     height: 2.5rem;
@@ -857,7 +906,7 @@ main .container .left .profile{
     border-radius: 10px;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.8);
     text-align: center;
-    width: 500px;
+    width: calc(min(80%, 500px));
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
