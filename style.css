@@ -301,10 +301,25 @@ main .container .left .profile{
     transition: all 2s ease-in; 
     padding: 15px;
     border-radius: 16px;
-    top: 1px;
-    left: 12rem;
     width: 100%;
+    left:25%;
+    top:80%;
 }
+/* .shownotifications{
+    background-color: var(--background-nav);
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    gap: 12px 0;
+    transition: all 2s ease-in; 
+    padding: 15px;
+    border-radius: 16px;
+    width: 90%;
+    left:25%;
+    top:80%;
+} */
 .notification_body>p{
     color:grey;
     font-size: 0.6rem;
@@ -331,12 +346,14 @@ main .container .left .profile{
         gap:15px;
         width: 100%;
     }
-    .left .sidebar i{
-        /* margin-left: 0; */
+    .left .sidebar{
+        margin-top: 0;
     }
     main .container .left{
-        position: absolute;
-        top: -30px;
+        /* position: absolute; */
+        position: fixed;
+        box-shadow: 5px 5px 10px black;
+        top: 75px;
         left: -105%;
         height: 100vh;
         /* border-radius: 0; */
