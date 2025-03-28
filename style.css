@@ -52,10 +52,12 @@ nav .container{
 }
 .menu-btn{
     display: none;
-    /* border: none; */
-    border:1px solid grey;
+    border: none;
+    /* border:1px solid grey; */
+    background-color: transparent;
     border-radius: 12px;
     padding: 0 4px;
+    color:var(--main-text);
 }
 /* set krle isko khud mai call pe huok */
 .menu-btn i{
