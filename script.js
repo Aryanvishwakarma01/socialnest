@@ -325,3 +325,21 @@ function story_open() {
         fullscreenDiv.remove();
     }, 2000);
 }
+
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const username  = getQueryParam("username")
+    const storedUser = localStorage.getItem(username)
+    const userData = JSON.parse(storedUser);
+
+            document.getElementById("profilename").innerText = userData.firstName;
+            document.querySelector(".text_muted").innerText = "@" + userData.username;
+            document.getElementById("userpic").src += userData.profilePic.src;
+            document.getElementById("profilephoto").src += userData.profilePic.src;
+       
+})   
+
