@@ -6,17 +6,18 @@ window.addEventListener("load", function () {
     });
 });
 
-function story_open() {
-    let img = document.getElementById("storypic");
+// function story_open() {
+//     let img = document.getElementsByClassName("storypic");
 
-    // Add expanded class
-    img.classList.add("expanded");
+//     // Add expanded class
+//     img.classList.add("expanded");
 
-    // Remove expanded class after 5 seconds
-    setTimeout(() => {
-        img.classList.remove("expanded");
-    }, 5000);
-}
+//     // Remove expanded class after 5 seconds
+//     setTimeout(() => {
+//         img.classList.remove("expanded");
+//     }, 2000);
+// }
+
 
 
 
@@ -30,16 +31,39 @@ for (let i = 1; i <= 25; i++) {
     ];
     stories.innerHTML += `
     <div class="story">
-                        <img onclick="story_open()" class="storypic" src="https://images.pexels.com/photos/${415828 + i}/pexels-photo-${415828 + i}.jpeg?auto=compress&cs=tinysrgb&w=300
-" alt="">
+                        <img onclick="story_open()" class="storypic" src="https://images.pexels.com/photos/${415828 + i}/pexels-photo-${415828 + i}.jpeg?auto=compress&cs=tinysrgb&w=300" alt="">
                         <img class="storyprofile" src="images/profile-${i % 20 + 1}.jpg" alt="">
                         <p>${i == 1 ? "Your Story" : foreignNames[i]}</p>
-         </div> 
-    `
+         </div> `
 
 }
 
+function story_open() {
 
+    document.querySelectorAll(".storypic").forEach(element => {
+        element.addEventListener("click", (e) => {
+            const imgSrc = e.target.src;
+
+
+            // Create full-screen overlay
+            let fullscreenDiv = document.createElement("div");
+            fullscreenDiv.classList.add("fullscreen");
+
+            // Create image inside overlay
+            let fullScreenImg = document.createElement("img");
+            fullScreenImg.src = imgSrc;
+
+            // Append image to overlay
+            fullscreenDiv.appendChild(fullScreenImg);
+            document.body.appendChild(fullscreenDiv);
+
+            // Close after 5 seconds
+            setTimeout(() => {
+                fullscreenDiv.remove();
+            }, 2000);
+        })
+    });
+}
 
 
 document.querySelector(".stories-container button").addEventListener("click", () => {
@@ -49,12 +73,7 @@ document.querySelector(".stories-container button").addEventListener("click", ()
     })
 })
 
-// script.js (optional for dynamic behavior)
-// document.querySelectorAll('.chat-item').forEach(item => {
-//     item.addEventListener('click', () => {
-//         alert('Chat opened!');
-//     });
-// });
+
 
 // Search Functionality
 document.getElementById('searchInput').addEventListener('keyup', function () {
@@ -234,9 +253,12 @@ document.getElementById("newpost").addEventListener("click", function () {
     // Reset selected image
     selectedImage = null;
     caption.value = null;
+    document.querySelector("#uploadpostimg p").innerText = " ";
+
     document.getElementById("imagePreview").style.display = "none";
     document.getElementById("fileInput").value = null;
     document.getElementById("postButton").disabled = true;
+
 });
 
 
@@ -305,26 +327,7 @@ function showMenu() {
     }
 }
 
-function story_open() {
-    let imgSrc = document.getElementsByClassName("storyphoto").src;
 
-    // Create full-screen overlay
-    let fullscreenDiv = document.createElement("div");
-    fullscreenDiv.classList.add("fullscreen");
-
-    // Create image inside overlay
-    let fullScreenImg = document.createElement("img");
-    fullScreenImg.src = imgSrc;
-
-    // Append image to overlay
-    fullscreenDiv.appendChild(fullScreenImg);
-    document.body.appendChild(fullscreenDiv);
-
-    // Close after 5 seconds
-    setTimeout(() => {
-        fullscreenDiv.remove();
-    }, 2000);
-}
 
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -332,17 +335,17 @@ function getQueryParam(param) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const username  = getQueryParam("username")
-    if(!username){
+    const username = getQueryParam("username")
+    if (!username) {
         window.location.href = "login.html";
     }
     const storedUser = localStorage.getItem(username)
     const userData = JSON.parse(storedUser);
 
-            document.getElementById("profilename").innerText = userData.firstName;
-            document.querySelector(".text_muted").innerText = "@" + userData.username;
-            document.getElementById("userpic").src += userData.profilePic.src;
-            document.getElementById("profilephoto").src += userData.profilePic.src;
-       
-})   
+    document.getElementById("profilename").innerText = userData.firstName;
+    document.querySelector(".text_muted").innerText = "@" + userData.username;
+    // document.getElementById("userpic").src += userData.profilePic.src;
+    // document.getElementById("profilephoto").src += userData.profilePic.src;
+
+});
 

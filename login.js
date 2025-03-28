@@ -23,6 +23,7 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
             const userData = JSON.parse(storedUser);
             if (userData.password === password) {
                 alert("Login successful!");
+                // window.location.href = "login.html";
                 window.location.href = `index.html?username=${encodeURIComponent(userData.username)}`;  // Redirect on success
             } else {
                 alert("Incorrect password.");
