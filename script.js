@@ -333,6 +333,9 @@ function getQueryParam(param) {
 
 document.addEventListener("DOMContentLoaded", () => {
     const username  = getQueryParam("username")
+    if(!username){
+        window.location.href = "login.html";
+    }
     const storedUser = localStorage.getItem(username)
     const userData = JSON.parse(storedUser);
 
