@@ -1,12 +1,10 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;  
     /* background-color: #f4f4f4; */
     /* background-color: black; */
     /* background: linear-gradient(to top,to bottom,blue,red); */
-    background: #DA4453;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: url(bg.jpg);
 
     display: flex;
     justify-content: center;
@@ -14,33 +12,46 @@ body {
     height: 100vh;
     width: 100%;
     margin: 0;
+
 }
 
 .container {
     align-self: center;
     background: rgba(0, 0, 0, 0.459);
-    padding: 15px 25px;
+    padding: 10px 10px;
     border-radius: 20px;
     /* box-shadow: 0px -2px 20px rgba(255, 255, 255, 0.8); */
     width: 400px;
     text-align: center;
     height:490px;
     color: white;
-    /* margin: 20px; */
+    margin: 20px;
     /* padding-bottom: 20px; */
     /* overflow: hidden; */
+}
+.names{
+    display: flex;
+    gap:5px;   
+    align-items: center;
+    justify-content: center;
+}
+#first-name{
+    width: 35%;
+}
+#last-name{
+    width: 35%;
 }
 .login-container {
     align-self: center;
     background: rgba(0, 0, 0, 0.459);
-    padding: 20px 25px;
+    padding: 10px 15px;
     border-radius: 20px;
     color: white;
     /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
     width: 350px;
     text-align: center;
     height: 350px;
-    /* margin: 20px; */
+    margin: 20px;
 }
 
 h2 {
@@ -53,7 +64,7 @@ h2 {
 }
 #socialnest{
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 
@@ -62,7 +73,7 @@ h2 {
     flex-direction: column;
     justify-items: center;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     height: 100%;
     width: 100%;
 }
@@ -119,7 +130,7 @@ p {
 
 a {
     color: rgb(255, 255, 255);
-    text-decoration: none;
+    text-decoration: underline;
 }
 .login{
     color: white;
