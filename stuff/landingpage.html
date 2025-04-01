@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Nest - Where Connections Take Flight!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: url(bg.jpg);
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-radius: 10px;
+        }
+        .navbar .logo {
+            width: 60px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+        .nav-links li {
+            display: inline;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+        .nav-links a:hover {
+            color: #333;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding-top: 80px;
+            position: relative;
+        }
+        h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, #ffdd57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        p {
+            font-size: 1.3em;
+            max-width: 700px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .buttons a {
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+        }
+        .login {
+            background: rgba(0, 198, 255, 0.9);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 198, 255, 0.5);
+        }
+        .signup {
+            background: rgba(255, 75, 43, 0.9);
+            color: white;
+            box-shadow: 0 4px 10px rgba(255, 75, 43, 0.5);
+        }
+        .login:hover, .signup:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        .background-elements {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .circle {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            filter: blur(50px);
+        }
+        .circle.one { top: 10%; left: 10%; }
+        .circle.two { bottom: 10%; right: 10%; }
+    </style>
+</head>
+<body>
+    <div class="background-elements">
+        <div class="circle one"></div>
+        <div class="circle two"></div>
+    </div>
+    
+    <nav class="navbar">
+        <img src="logo.png" alt="Social Nest Logo" class="logo">
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <a href="signup.html" class="signup" style="padding: 10px 20px; border-radius: 25px;">Create An Account</a>
+    </nav>
+    
+    <div class="container">
+        <h1>Social Nest that feels <span>Human</span> <br> Network and Voice</h1>
+        <p>Join the ultimate social platform to connect, share, and grow with people worldwide. Build meaningful connections effortlessly.</p>
+        <div class="buttons">
+            <a href="login.html" class="login">Login</a>
+            <a href="signup.html" class="signup">Sign Up</a>
+        </div>
+    </div>
+</body>
+</html>
