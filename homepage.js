@@ -335,9 +335,11 @@ document.addEventListener("DOMContentLoaded",async () => {
     const userData = await checkAuthStatus();
     console.log(userData?.prefs)
     document.getElementById("profilename").innerText = userData?.name;
-    document.querySelectorAll(".userAvatar").forEach(element => {
+    let avatar=document.querySelectorAll(".userAvatar").forEach(element => {
         element.src = userData?.prefs?.avatar
     });
+    console.log(avatar);
+    
     document.getElementById("username").innerText = "@"+ userData?.prefs.username;
     // document.querySelector(".text_muted").innerText = "@" + userData.username;
     // document.getElementById("userpic").src += userData.profilePic.src;

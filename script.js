@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const username = this.querySelector('input[id="user-name"]')?.value || '';
                     const email = this.querySelector('input[type="email"]').value;
                     const password = this.querySelector('input[type="password"]').value;
-                    const avatar = `https://cloud.appwrite.io/v1/avatars/initals?name=${name}`
+                    const avatar = `https://api.dicebear.com/7.x/initials/svg?seed=${name}&backgroundColor=ff5733&fontSize=50`
                     
                     // Create user in Appwrite
                     const user = await account.create(ID.unique(), email, password, name);
