@@ -118,6 +118,12 @@ nav .container{
         margin: 0;
         padding: 0;
     }
+    .request-item{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap:20px;
+    }
 }
 .heading{
     font-size: 1rem;
