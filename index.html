@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SocialNest - Connect & Share</title>
+    <title>SocialNest</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/appwrite@11.0.0"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="auth-container">
@@ -26,43 +29,75 @@
                     <i class="fas fa-moon dark-icon"></i>
                     <i class="fas fa-sun light-icon" style="display: none;"></i>
                 </button>
-                
+
                 <div class="tabs">
                     <button class="tab-btn active" data-tab="login">Login</button>
                     <button class="tab-btn" data-tab="register">Registration</button>
                     <div class="tab-indicator"></div>
                 </div>
-                
+
                 <div class="forms-container">
                     <div class="form-wrapper">
                         <!-- Login Form -->
                         <form id="login-form" class="form active">
                             <h2>Welcome Back</h2>
                             <p class="form-subtitle">Login to your account</p>
-                            
+
                             <div class="form-group">
                                 <label for="login-email">Email</label>
                                 <input type="email" id="login-email" placeholder="Enter your email">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="login-password">Password</label>
                                 <input type="password" id="login-password" placeholder="Enter your password">
                             </div>
-                            
+
                             <div class="form-options">
                                 <div class="remember-me">
                                     <input type="checkbox" id="remember">
                                     <label for="remember">Remember me</label>
                                 </div>
-                                <a href="#" class="forgot-password">Forgot Password?</a>
+                                <!-- <a href="#" class="forgot-password">Forgot Password?</a> -->
                             </div>
-                            
+
                             <button type="submit" class="submit-btn">
                                 Login
                                 <i class="fas fa-arrow-right"></i>
                             </button>
-                            
+
+                            <!-- Forgot Password Modal -->
+                            <!-- <div id="forgot-password-modal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close-btn">&times;</span>
+                                    <h2>Reset Password</h2>
+                                    <form id="reset-password-form">
+                                        <div class="form-group">
+                                            <label for="current-password">Current Password</label>
+                                            <input type="password" id="current-password"
+                                                placeholder="Enter your current password" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="new-password">New Password</label>
+                                            <input type="password" id="new-password"
+                                                placeholder="Enter your new password" required>
+                                            <small class="password-requirements">Password must be at least 8 characters
+                                                long and include a mix of letters, numbers, and symbols.</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="confirm-new-password">Confirm New Password</label>
+                                            <input type="password" id="confirm-new-password"
+                                                placeholder="Confirm your new password" required>
+                                        </div>
+                                        <div class="form-error" id="reset-password-error"></div>
+                                        <button type="submit" class="submit-btn">
+                                            Reset Password
+                                            <i class="fas fa-arrow-right"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div> -->
+
                             <div class="social-login">
                                 <p>Or login with</p>
                                 <div class="social-icons">
@@ -78,12 +113,12 @@
                                 </div>
                             </div>
                         </form>
-                        
+
                         <!-- Registration Form -->
                         <form id="register-form" class="form">
                             <h2>Create Account</h2>
                             <p class="form-subtitle">Join SocialNest today</p>
-                            
+
                             <div class="form-group">
                                 <label for="full-name">Full Name</label>
                                 <input type="text" id="full-name" placeholder="Enter your full name">
@@ -92,13 +127,13 @@
                                 <label for="user-name">Username</label>
                                 <input type="text" id="user-name" placeholder="Enter your username">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="register-email">Email</label>
                                 <input type="email" id="register-email" placeholder="Enter your email">
                             </div>
-                            
-    
+
+
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="register-password">Password</label>
@@ -109,7 +144,7 @@
                                     <input type="password" id="confirm-password" placeholder="Confirm password">
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label>Gender</label>
                                 <div class="gender-options">
@@ -131,21 +166,23 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <button type="submit" class="submit-btn">
-                                Next Step
+                                Create Account
                                 <i class="fas fa-arrow-right"></i>
                             </button>
-                            
-                            <p class="login-link">Already have an account? <a href="#" class="switch-to-login">Sign in</a></p>
+
+                            <p class="login-link">Already have an account? <a href="#" class="switch-to-login">Sign
+                                    in</a></p>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script src="appwrite.js"></script>
     <script type="module" src="script.js" defer></script>
 </body>
+
 </html>

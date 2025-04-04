@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="notification.css">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="sitetheme.css">
+    <script>
+        function homepage(){
+            window.location.href="homepage.html"
+        }
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <div class="heading">
+                <button type="button" onclick="showMenu()" class="menu-btn"><i class="ri-menu-line"></i></button>
+                <h2>SocialNest</h2>
+            </div>
+            <div class="search_bar">
+                <i class="ri-search-line"></i>
+                <input type="search" placeholder="Search of Creators, Inspirations and Projects">
+            </div>
+            <div class="logo flex items-centre">
+                <button class="btn" for="create-post ">Create</button>
+                <div class="profile_photo">
+                    <img id="userpic" class="userAvatar" src="defprofile.png" alt="">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        
+
+        <!-- notification group -->
+        <div class="notifications_popup shadow ">
+            <div class="notificationtextarea"><i onclick="homepage()" class="ri-arrow-left-line back"></i><h3 class="notificationtext"> 
+                <i class="ri-notification-2-line"></i>  Notifications</h3>  
+            </div>
+               
+            <div class="flex single-notification">
+                <div class="profile_photo">
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQE-pSKaa--KBQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1727273849266?e=1748476800&v=beta&t=x88ltetAFJfm96eOYuTGbynVKa-ayl-cWYihS8bRakg"
+                        alt="">
+                </div>
+                <div class="notification_body">
+                    <b>Kamal Thakur</b> accepted your follow request
+                    <p>2 Days Ago</p>
+                </div>
+            </div>
+            <div class="flex single-notification">
+                <div class="profile_photo">
+                    <img src="https://avatars.githubusercontent.com/u/154773141?v=4" alt="">
+                </div>
+                <div class="notification_body">
+                    <b>Paras Saini</b> commented on your post
+                    <p>1 Hour Ago </p>
+                </div>
+            </div>
+            <div class="flex single-notification">
+                <div class="profile_photo">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQFsTjZVhtn8wA/profile-displayphoto-shrink_200_200/B4DZSh.zvZG8Ac-/0/1737884385046?e=1748476800&v=beta&t=_0IeQjAhthKqzNf-N_VV6A6J8k5Y-pSy9XnRLgz5fZg"
+                        alt="">
+                </div>
+                <div class="notification_body">
+                    <b>Abhishek Kumar</b> and <b>50 others</b> liked your post
+                    <p>5 Minutes Ago</p>
+                </div>
+            </div>
+            <div class="flex single-notification">
+                <div class="profile_photo">
+                    <img src="https://i.pinimg.com/736x/3f/a7/58/3fa7581462f341e6532d1517b5a11403.jpg" alt="">
+                </div>
+                <div class="notification_body">
+                    <b>Elon Musk</b> commented on a post you are tagged in
+                    <p>2 Days Ago</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="sitetheme.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const theme = localStorage.getItem("themeColor");
+            changeBackground(theme)
+        })
+    </script>
+</body>
+
+</html>

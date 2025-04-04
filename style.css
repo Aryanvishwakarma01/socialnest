@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@import url(sitetheme.css);
 *, *::before, *::after{
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@
     text-decoration: none;
     list-style: none;
 }
-:root{
+/* :root{
     --btn-color: rgb(216, 51, 231);
     --hover-btn-color: rgb(227, 108, 238);
     --background-nav:white;
@@ -17,7 +17,7 @@
     --text-color:black;
     --main-text:black;
     --chat-btn:rgb(196, 195, 195);
-}
+} */
 body{
     font-family: "Poppins", sans-serif;
     font-weight: 400;
@@ -44,6 +44,7 @@ nav .container{
 .profile_photo{
     height: 2.5rem;
     width: 2.5rem;
+    cursor: pointer;
 }
 .profile_photo img{
     width: 100%;
@@ -296,7 +297,7 @@ main .container .left .profile{
    
 }
 
-#notifications:hover .notifications_popup{
+/* #notifications:hover .notifications_popup{
     background-color: var(--background-nav);
     position: absolute;
     z-index: 5;
@@ -310,7 +311,7 @@ main .container .left .profile{
     width: 120%;
     left:25%;
     top:80%;
-}
+} */
 /* .shownotifications{
     background-color: var(--background-nav);
     position: absolute;

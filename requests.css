@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("sitetheme.css");
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+/* :root{
+    --btn-color: rgb(216, 51, 231);
+    --hover-btn-color: rgb(227, 108, 238);
+    --background-nav:white;
+    --background-body:#F0EEF6;
+    --search-bg:rgb(241, 237, 237);
+    --menu-item-hover:rgb(233, 227, 227);
+    --text-color:black;
+    --main-text:black;
+    --chat-btn:rgb(196, 195, 195);
+} */
+body{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    /* background-color: var(--background-body); */
+    background:var(--background-body);
+    /* position: relative; */
+}
+
+nav{
+    padding: 10px 20px;
+    width: 100%;
+    position: sticky;
+    z-index: 100;
+    background-color: var(--background-nav);
+}
+nav .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 8%; */
+    /* margin: 0 20px; */
+    width: 80%;
+    margin: auto;
+}
+.profile_photo{
+    height: 2.5rem;
+    width: 2.5rem;
+}
+.profile_photo img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.menu-btn{
+    display: none;
+    border: none;
+    /* border:1px solid grey; */
+    background-color: transparent;
+    border-radius: 12px;
+    padding: 0 4px;
+    color:var(--main-text);
+}
+.menu-btn i{
+    font-size: 20px;
+}
+.logo{
+    display: flex;
+    gap:30px;
+    align-items: center;
+}
+.logo>button{
+    border: none;
+}
+.search_bar{
+    display: flex;
+    gap:20px;
+    align-items: center;
+    border-radius: 25px;
+    padding: 8px 30px;
+    background-color: var(--background-body);
+    width: 50%;
+}
+.search_bar input{
+    padding: 5px;
+    color:var(--main-text);
+    background-color: var(--background-body);
+    width: 100%;
+    height: 30px;
+    outline: none;
+    border: none;
+}
+.search_bar i{
+    color:var(--main-text);
+}
+.search_bar input:focus, input{
+    outline: none;
+    border: none;
+}
+@media screen and (max-width:431px){
+    .search_bar{
+        width: 150px;
+        padding: 2px 5px;
+    }
+    .heading>h2{
+        width: max-content;
+        font-size:1rem;
+        padding: 0;
+        margin: 0;
+    }
+    .menu-btn{
+        display: inline-block;
+    }
+    nav .logo>button{
+        display: none;
+    }
+    nav .container{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+.heading{
+    font-size: 1rem;
+    font-weight: 100;
+    display: flex;
+    gap:10px;
+    color:var(--main-text);
+}
+
+
+.btn{   
+    border-radius:20px;
+    background-color: var(--btn-color);
+    padding: 8px 25px;
+    color:white;
+    font-weight: 500;
+}
+.btn:hover{
+    background-color: var(--hover-btn-color);
+}
+
+
+/* friend request panel design */
+.requests-panel {
+    width: 75vw;
+    margin: auto;
+    background:var(--background-body);
+    padding: 15px;
+    /* margin-top: 20px; */
+    /* position: absolute; */
+    top:10%;
+    border-radius: 20px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+.requests-panel h2{
+    font-size: 1rem;
+    padding-bottom: 10px;
+    color:var(--main-text);
+}
+
+/* Requests List */
+.request-list {
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+}
+
+.request-item {
+    /* gap: 12px; */
+    padding: 30px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.request-item:hover {
+    background: var(--background-nav);
+}
+
+.request-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.request-info {
+    /* flex-grow: 1; */
+    display: flex;
+    gap:10px;
+    /* align-items: center; */
+}
+
+.request-info h4 {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color:var(--main-text);
+}
+
+.request-info p {
+    margin: 3px 0 0;
+    font-size: 0.8rem;
+    color: gray;
+}
+@media screen and (max-width:740px){
+    .requests-panel{
+        width: 100vw;
+    }
+}
+
+/* Accept & Decline Buttons */
+.actions {
+    display: flex;
+    gap: 15px;
+    /* justify-content: space-around; */
+}
+
+.accept, .decline {
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.accept {
+    background: var(--btn-color);
+    color: white;
+    
+}
+
+.decline {
+    background: rgb(231, 228, 228);
+    color: rgb(0, 0, 0);
+}
+
+.accept:hover {
+    /* background:; */
+}
+
+.decline:hover {
+    background: rgb(241, 239, 239);
+}
+.request{
+    text-align: center;
+}
+.back{
+    position: absolute;
+    left:2%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color:var(--main-text);
+}
+.requestheading h2{
+    font-size: 1.5rem;
+}
+.req-heading p{
+    font-size: 0.8rem;
+    color:black;
+}

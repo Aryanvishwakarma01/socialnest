@@ -61,7 +61,7 @@
                         <span><i class="ri-compass-3-line"></i></span>
                         <h3>Explore</h3>
                     </a>
-                    <a class="menu_item relative" id="notifications" onclick="open_notification()">
+                    <a href="notification.html" class="menu_item relative" id="notifications" onclick="open_notification()">
                         <span><i class="ri-notification-line"><small class="notification-count">9+</small></i></span>
                         <h3>Notifications</h3>
 
@@ -108,18 +108,18 @@
                         </div>
                     </a>
                     <!-- notification popup -->
-                    <a class="menu_item" id="messages-notifications">
+                    <a href="messages.html" class="menu_item" id="messages-notifications">
                         <span><i class="ri-message-2-line"><small class="notification-count">6</small></i></span>
                         <h3>Messages</h3>
                     </a>
-                    <a class="menu_item">
-                        <span><i class="ri-bookmark-line"></i></span>
-                        <h3>Bookmarks</h3>
+                    <a href="requests.html" class="menu_item">
+                        <span><i class="ri-team-line"></i></span>
+                        <h3>Friend Requests</h3>
                     </a>
-                    <a class="menu_item">
+                    <!-- <a class="menu_item">
                         <span><i class="ri-bar-chart-box-line"></i></span>
                         <h3>Analytics</h3>
-                    </a>
+                    </a> -->
                     <a class="menu_item" id="themebutton">
                         <span><i class="ri-palette-line"></i></span>
                         <h3>Theme</h3>
@@ -156,7 +156,7 @@
                         <div class="profile_photo">
                             <img class="userAvatar" src="defprofile.png" alt="">
                         </div>
-                        <input type="search" id="post-caption" placeholder="What's on your mind, Aryan?">
+                        <input type="search" id="post-caption" placeholder="What's on your mind, ">
                         <div class="logo">
                             <button type="submit" class="btn" id="newpost" for="create-post"
                                 style="border: none;padding:5px 15px;">Post</button>
@@ -396,6 +396,7 @@
 
         </div>
     </main>
+    <script src="sitetheme.js"></script>
     <script src="appwrite.js"></script>
     <script src="homepage.js" ></script>
 

@@ -1,6 +1,8 @@
 // Retrieve and display posts on page load
 window.addEventListener("load", function () {
     let savedPosts = JSON.parse(localStorage.getItem("posts")) || [];
+    let savedTheme = localStorage.getItem("themeColor")
+    changeBackground(savedTheme)
     savedPosts.forEach(post => {
         document.querySelector(".posts").insertAdjacentHTML("afterbegin", post);
     });
@@ -31,7 +33,7 @@ for (let i = 1; i <= 25; i++) {
     ];
     stories.innerHTML += `
     <div class="story">
-                        <img onclick="story_open()" class="storypic" src="https://images.pexels.com/photos/${415828 + i}/pexels-photo-${415828 + i}.jpeg?auto=compress&cs=tinysrgb&w=300" alt="">
+                        <img onclick="story_open()" class="storypic" src=https://images.pexels.com/photos/${415828 + i}/pexels-photo-${415828 + i}.jpeg?auto=compress&cs=tinysrgb&w=300" alt="">
                         <img class="storyprofile" src="images/profile-${i % 20 + 1}.jpg" alt="">
                         <p>${i == 1 ? "Your Story" : foreignNames[i]}</p>
          </div> `
@@ -150,6 +152,8 @@ document.querySelectorAll('.decline').forEach(button => {
         alert('Friend Request Declined!');
     });
 });
+
+
 
 
 let selectedImage = null;
@@ -273,21 +277,7 @@ document.querySelectorAll(".menu_item").forEach((item) => {
         closethemepanel()
     })
 })
-function changeBackground(theme) {
-    if (theme === 'light') {
-        window.location.reload();
-    } else if (theme === 'dark') {
-        document.documentElement.style.setProperty('--background-nav', '#2A2442');
-        document.documentElement.style.setProperty('--background-body', '#1F1B32');
-        document.documentElement.style.setProperty('--menu-item-hover', '#1F1B32');
-        document.documentElement.style.setProperty('--main-text', '#FFFFFF');
-        document.documentElement.style.setProperty('--chat-btn', '#000000');
-        // document.documentElement.style.setProperty('--hover-btn-color', '#1F1B32');
-    } else if (theme === 'black') {
-        document.documentElement.style.setProperty('--background-nav', '#110E1B');
-        document.documentElement.style.setProperty('--background-body', '#000000');
-    }
-}
+
 // selecting theme button
 let themebutton = document.getElementById("themebutton")
 themebutton.addEventListener('click', function () {
@@ -311,11 +301,7 @@ themebutton.addEventListener('click', function () {
     );
 })
 
-// theme change settings
-function changeColor(color, hovercolor) {
-    document.documentElement.style.setProperty('--btn-color', color);
-    document.documentElement.style.setProperty('--hover-btn-color', hovercolor);
-}
+
 
 function showMenu() {
     let left = document.querySelector(".left");
@@ -338,12 +324,16 @@ document.addEventListener("DOMContentLoaded",async () => {
     let avatar=document.querySelectorAll(".userAvatar").forEach(element => {
         element.src = userData?.prefs?.avatar
     });
-    console.log(avatar);
+    // console.log(avatar);
     
     document.getElementById("username").innerText = "@"+ userData?.prefs.username;
+    document.getElementById("post-caption").placeholder+= userData?.name;
     // document.querySelector(".text_muted").innerText = "@" + userData.username;
     // document.getElementById("userpic").src += userData.profilePic.src;
     // document.getElementById("profilephoto").src += userData.profilePic.src;
 
 });
 
+document.getElementById("userpic").addEventListener("click", function(){
+    window.location.href="profile/profile.html"
+})

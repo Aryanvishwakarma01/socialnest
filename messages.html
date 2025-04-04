@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="messages.css">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="sitetheme.css">
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <div class="heading">
+
+                <h2>SocialNest</h2>
+            </div>
+            <div class="search_bar">
+                <i class="ri-search-line"></i>
+                <input type="search" placeholder="Search of Creators, Inspirations and Projects">
+            </div>
+            <div class="logo flex items-centre">
+                <button class="btn" for="create-post ">Create</button>
+                <div class="profile_photo">
+                    <img id="userpic" class="userAvatar" src="defprofile.png" alt="">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="messages-panel">
+            <div class="messages-nav flex space-between item-centre">
+                <i onclick="homepage()" class="ri-arrow-left-line back"></i>
+                <h4><i class="ri-edit-box-line"></i>Messages</h4>
+
+            </div>
+            <!-- Search Bar -->
+            <input type="search" id="searchInput" placeholder="Search messages..." class="search-bar">
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <span class="tab active" data-tab="primary">Primary</span>
+                <span class="tab" data-tab="general">General</span>
+                <span class="tab requests" data-tab="requests">Requests<sup>6</sup></span>
+            </div>
+
+            <!-- Chat List -->
+            <div class="chat-list">
+                <div class="chat-item">
+                    <img src="images/profile-1.jpg" alt="User 1">
+                    <div class="chat-info">
+                        <h4>Riya Sharma</h4>
+                        <p>Hey Aryan! How are you?</p>
+                    </div>
+                    <span class="unread-count">2</span>
+                </div>
+
+                <div class="chat-item">
+                    <img src="images/profile-2.jpg" alt="User 2">
+                    <div class="chat-info">
+                        <h4>Rahul Verma</h4>
+                        <p>Let’s catch up soon.</p>
+                    </div>
+                </div>
+
+                <div class="chat-item">
+                    <img src="images/profile-3.jpg" alt="User 3">
+                    <div class="chat-info">
+                        <h4>Neha Kapoor</h4>
+                        <p>Sent an image 📷</p>
+                    </div>
+                    <span class="unread-count">1</span>
+                </div>
+
+                <div class="chat-item">
+                    <img src="images/profile-4.jpg" alt="User 4">
+                    <div class="chat-info">
+                        <h4>Amit Singh</h4>
+                        <p>Are you free tomorrow?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+    <script src="sitetheme.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const theme = localStorage.getItem("themeColor");
+            changeBackground(theme)
+        })
+    </script>
+    <script src="messages.js"></script>
+</body>
+
+</html>

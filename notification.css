@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("sitetheme.css");
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+body{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    background-color: var(--background-body);
+}
+
+nav{
+    padding: 10px 20px;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    background-color: var(--background-nav);
+}
+nav .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 8%; */
+    /* margin: 0 20px; */
+    width: 80%;
+    margin: auto;
+}
+.profile_photo{
+    height: 2.5rem;
+    width: 2.5rem;
+}
+.profile_photo img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.menu-btn{
+    display: none;
+    border: none;
+    /* border:1px solid grey; */
+    background-color: transparent;
+    border-radius: 12px;
+    padding: 0 4px;
+    color:var(--main-text);
+}
+/* set krle isko khud mai call pe huok */
+.menu-btn i{
+    font-size: 20px;
+}
+.logo{
+    display: flex;
+    gap:30px;
+    align-items: center;
+}
+.logo>button{
+    border: none;
+}
+.search_bar{
+    display: flex;
+    gap:20px;
+    align-items: center;
+    border-radius: 25px;
+    padding: 8px 30px;
+    background-color: var(--background-body);
+    width: 50%;
+}
+.search_bar input{
+    padding: 5px;
+    color:var(--main-text);
+    background-color: var(--background-body);
+    width: 100%;
+    height: 30px;
+    outline: none;
+    border: none;
+}
+.search_bar i{
+    color:var(--main-text);
+}
+.search_bar input:focus, input{
+    outline: none;
+    border: none;
+}
+@media screen and (max-width:431px){
+    .search_bar{
+        width: 150px;
+        padding: 2px 5px;
+    }
+    .heading>h2{
+        width: max-content;
+        font-size:1rem;
+        padding: 0;
+        margin: 0;
+    }
+    .menu-btn{
+        display: inline-block;
+    }
+    nav .logo>button{
+        display: none;
+    }
+    nav .container{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+.heading{
+    font-size: 1rem;
+    font-weight: 100;
+    display: flex;
+    gap:10px;
+    color:var(--main-text);
+}
+
+.btn{   
+    border-radius:20px;
+    background-color: var(--btn-color);
+    padding: 8px 25px;
+    color:white;
+    font-weight: 500;
+}
+.btn:hover{
+    background-color: var(--hover-btn-color);
+}
+main{
+    display: flex;
+    justify-content: center;
+}
+
+.notifications_popup{
+    /* background-color: var(--background-nav); */
+    position: absolute;
+    /* z-index: 5; */
+    display: flex;
+    font-size: 0.8rem;
+    flex-direction: column;
+    gap: 12px 0;
+    /* transition: all 2s ease-in;  */
+    padding: 20px;
+    /* border-radius: 50px; */
+    /* height: 100%; */
+    width: 100vw;
+
+    margin:20px;
+    /* left:25%; */
+    top:6%;
+    /* border: 2px solid black; */
+    /* box-shadow: 0px 4px 10px 0px black; */
+
+}
+
+.single-notification{
+    border-bottom:  var(--single-notification);
+    font-size: 1rem;
+    display: flex;
+    padding: 15px;
+    gap:20px;
+}
+.single-notification:hover{
+    font-size: 1rem;
+    /* padding: 10px; */
+    border-radius: 20px;
+    background-color: var(--single-notification-hover);
+}
+.notificationtextarea{
+    font-size: 1.5rem;
+    text-align: center;
+    /* position: absolute; */
+    /* display: flex; */
+    /* gap:50px; */
+    /* justify-content: space-between; */
+    /* top:15%; */
+    align-items: center;
+}
+.notificationtext{
+    text-align: center;
+    display: inline;
+    margin: 50px;
+    color:var(--main-text);
+}
+.back{
+    position: absolute;
+    left:2%;
+    cursor: pointer;
+    color:var(--main-text);
+}
+.notification_body{
+    color:var(--main-text);
+}

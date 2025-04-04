@@ -1,0 +1,13 @@
+:root{
+    --btn-color: rgb(216, 51, 231);
+    --hover-btn-color: rgb(227, 108, 238);
+    --background-nav:white;
+    --background-body:#F0EEF6;
+    --search-bg:rgb(241, 237, 237);
+    --menu-item-hover:rgb(233, 227, 227);
+    --text-color:black;
+    --main-text:black;
+    --chat-btn:rgb(196, 195, 195);
+    --single-notification:1px solid rgb(172, 166, 166);
+    --single-notication-hover:rgb(207, 203, 203);
+}

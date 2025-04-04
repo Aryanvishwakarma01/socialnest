@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Nest - Profile</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="../sitetheme.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="container">
+        <div class="heading">
+            <button type="button" class="menu-btn"><i class="ri-menu-line"></i></button>
+            <h2>SocialNest</h2>
+        </div>
+        <div class="search_bar">
+            <i class="ri-search-line"></i>
+            <input type="search" placeholder="Search of Creators, Inspirations and Projects">
+        </div>
+        <div class="logo flex items-centre">
+            <button class="btn" for="create-post ">Create</button>
+            <div class="profile_photo">
+                <img id="userpic" class="userAvatar" src="defprofile.png" alt="">
+            </div>
+        </div>
+    </div>
+</nav>
+  
+  <!-- Main Container -->
+  <div class="main">
+    <!-- Sidebar  
+    <div class="sidebar">
+      <a href="#" class="menu-item">
+        <span style="margin-right: 12px;">🏠</span>
+        Home
+      </a>
+      <a href="#" class="menu-item">
+        <span style="margin-right: 12px;">🔍</span>
+        Explore
+      </a>
+      <a href="#" class="menu-item">
+        <span style="margin-right: 12px;">🔔</span>
+        Notifications
+      </a>
+      <a href="#" class="menu-item">
+        <span style="margin-right: 12px;">💬</span>
+        Messages
+      </a>
+      <a href="#" class="menu-item">
+        <span style="margin-right: 12px;">👥</span>
+        Friend Requests
+      </a>
+      <a href="#" class="menu-item">
+        <span style="margin-right: 12px;">📊</span>
+        Analytics
+      </a>
+      <a href="#" class="menu-item active">
+        <span style="margin-right: 12px;">👤</span>
+        Profile
+      </a>
+    </div> -->
+    <a href="../homepage.html" class="back"><i class="ri-arrow-left-line"></i></a>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="profile-header">
+        <div class="large-avatar">
+          AV
+          <div class="upload-overlay">
+            📷
+          </div>
+        </div>
+        <div class="user-info">
+          <h1>Aryan Vishwakarma</h1>
+          <p>@aryanvish86</p>
+        </div>
+      </div>
+      
+        <!-- <div class="tabs">
+            <div class="tab">Posts</div>
+            <div class="tab">Media</div>
+            <div class="tab">Likes</div>
+            <div class="tab active">Settings</div>
+        </div> -->
+      
+      <!-- Profile Settings Form -->
+      <div class="form-section">
+        <div class="section-header">
+          <h3 class="section-title">Profile Information</h3>
+        </div>
+        
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" class="form-control" value="Aryan Vishwakarma" readonly>
+        </div>
+        
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" class="form-control" value="aryanvish86" readonly>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" class="form-control" value="aryan.vishwakarma@example.com" readonly>
+        </div>
+        
+        
+        <div class="form-group">
+          <label>Gender</label>
+          <div class="radio-group">
+            <input type="email" id="email" class="form-control" value="Male" readonly>
+            <!-- <div class="radio-option">
+              <input type="radio" id="male" name="gender" checked>
+              <label for="male">Male</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="female" name="gender">
+              <label for="female">Female</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="other" name="gender">
+              <label for="other">Other</label>
+            </div> -->
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" class="form-control" value="1998-06-15" readonly>
+        </div>
+        
+        <!-- <button class="btn">Save Changes</button> -->
+      </div>
+      
+      <!-- Password Section -->
+      <div class="form-section">
+        <div class="section-header">
+          <h3 class="section-title">Change Password</h3>
+        </div>
+        
+        <div class="form-group">
+          <label for="currentPassword">Current Password</label>
+          <input type="password" id="currentPassword" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label for="newPassword">New Password</label>
+          <input type="password" id="newPassword" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label for="confirmPassword">Confirm New Password</label>
+          <input type="password" id="confirmPassword" class="form-control">
+        </div>
+        
+        <button class="btn">Update Password</button>
+      </div>
+      
+      <!-- Privacy Section -->
+      <!-- <div class="form-section">
+        <div class="section-header">
+          <h3 class="section-title">Privacy Settings</h3>
+        </div>
+        
+        <div class="form-group">
+          <label>Who can see your profile</label>
+          <select class="form-control">
+            <option>Everyone</option>
+            <option>Friends only</option>
+            <option>Only me</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Who can message you</label>
+          <select class="form-control">
+            <option>Everyone</option>
+            <option>Friends only</option>
+            <option>No one</option>
+          </select>
+        </div>
+        
+        <button class="btn">Save Privacy Settings</button>
+      </div> -->
+      
+      <!-- Danger Zone -->
+      <!-- <div class="form-section" style="border: 1px solid rgba(255, 0, 0, 0.3);">
+        <div class="section-header">
+          <h3 class="section-title" style="color: #ff6b6b;">Account Actions</h3>
+        </div>
+        
+        <p style="color: var(--gray); margin-bottom: 24px;">These actions are permanent and cannot be undone.</p>
+        
+        <button class="btn btn-outline" style="color: #ff6b6b; border-color: #ff6b6b;">Deactivate Account</button>
+      </div> -->
+    </div>
+  </div>
+  <script src="/sitetheme.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const theme = localStorage.getItem("themeColor");
+            changeBackground(theme)
+        })
+    </script>
+</body>
+</html>
