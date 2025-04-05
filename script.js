@@ -177,6 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const username = this.querySelector('input[id="user-name"]')?.value || '';
                     const email = this.querySelector('input[type="email"]').value;
                     const password = this.querySelector('input[type="password"]').value;
+                    // const dob = document.getElementById('dob').value;
                     const avatar = `https://api.dicebear.com/7.x/initials/svg?seed=${name}&backgroundColor=ff5733&fontSize=50`
 
                     // Password validation function

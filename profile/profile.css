@@ -114,9 +114,9 @@ input {
         margin: 0;
     }
 
-    .menu-btn {
+    /* .menu-btn {
         display: inline-block;
-    }
+    } */
 
     nav .logo>button {
         display: none;
@@ -126,6 +126,9 @@ input {
         width: 100%;
         margin: 0;
         padding: 0;
+    }
+    .main{
+        padding: 20px;
     }
 }
 
@@ -149,10 +152,9 @@ input {
     background-color: var(--hover-btn-color);
 }
 
-
 .main {
     display: flex;
-    
+    width: 90vw;
     margin: 0 auto;
     padding: 24px;
 }
@@ -162,7 +164,9 @@ input {
     flex: 1;
     background-color: var(--background-body);
     border-radius: 12px;
-    padding: 24px;
+    /* padding: 24px; */
+    width: 80%;
+    justify-content: 
 }
 
 .menu-item {
@@ -192,8 +196,8 @@ input {
 }
 
 .large-avatar {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     background-color: #ff6b4a;
     color: white;
@@ -205,7 +209,9 @@ input {
     position: relative;
     margin-right: 24px;
 }
-
+.large-avatar img{
+    border-radius: 50%;
+}
 .upload-overlay {
     position: absolute;
     bottom: 0;
@@ -262,7 +268,7 @@ input {
 }
 
 .form-control {
-    width: 90%;
+    width: 100%;
     padding: 12px 16px;
     border: 1px solid black;
     border-radius: 8px;
@@ -296,20 +302,29 @@ input {
 .form-section {
     background-color: var(--background-nav);
     border-radius: 12px;
-    padding: 24px;
+    padding: 24px 24px;
     margin-bottom: 24px;
+    width: 100%;
 }
 .section-title{
     color:var(--main-text);
     text-align: center;
     font-size: 1.5rem;
+    margin-bottom: 20px;
 }
 
 .back{
     position: relative;
-    left:2px;
-    top:2%;
+    left:5px;
+    top:3%;
     font-size: 1.5rem;
     color:var(--main-text);
     cursor: pointer;
+    height: max-content;
+    z-index: 100;
+}
+@media screen and (max-width:431px) {
+    .main{
+        padding: 10px;
+    }
 }

@@ -22,3 +22,17 @@ const checkAuthStatus = async () => {
         // User is not logged in, show login/register UI
     }
 }
+
+document.addEventListener("DOMContentLoaded",async () => {
+    
+    const userData = await checkAuthStatus();
+    console.log(userData)
+    document.getElementById("avatar").src = userData?.prefs?.avatar
+    document.getElementById("userpic").src = userData?.prefs?.avatar
+    document.getElementById("username").innerText = userData?.name
+    document.getElementById("userid").innerText = "@"+userData?.prefs.username
+    document.getElementById("fullName").value = userData?.name
+    document.getElementById("user-name").value = "@"+ userData?.prefs?.username
+    document.getElementById("email").value = userData?.email
+    });
+
