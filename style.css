@@ -507,13 +507,16 @@ main .container .left .profile{
 }
 .story .storyprofile{
     position: absolute;
-    width: 45px;
+    width: 40px;
     aspect-ratio: 1/1;
     border-radius: 9999px;
     top: 2px;
     left: 2px;
     border: 3px solid rgb(96, 96, 199);
 
+}
+#userdp{
+    width: 40px;
 }
 
 .dopost{

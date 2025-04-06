@@ -22,12 +22,12 @@ window.addEventListener("load", function () {
 //     }, 2000);
 // }
 
-let userData;
+
 
 let stories = document.querySelector(".stories")
 
 for (let i = 1; i <= 25; i++) {
-
+   
     const foreignNames = [
         "Alejandro", "Sofia", "Matteo", "Isla", "Léon", "Freja", "Hugo", "Emilia", "Luca", "Anya",
         "Dmitri", "Yuki", "Hana", "Kai", "Amélie", "Sven", "Elina", "Felix", "Ines", "Rafaela",
@@ -37,7 +37,7 @@ for (let i = 1; i <= 25; i++) {
         stories.innerHTML += `
     <div class="story">
                         <img onclick="story_open()" class="storypic" src=https://images.pexels.com/photos/${415828 + i}/pexels-photo-${415828 + i}.jpeg?auto=compress&cs=tinysrgb&w=300" alt="">
-                        <img class="storyprofile" src="images/profile-1.jpg" alt="">
+                        <img id="userdp" class="storyprofile" src="images/profile-1.jpg" alt="">
                         <p>${i == 1 ? "Your Story" : foreignNames[i]}</p>
          </div> `
     }
@@ -477,6 +477,7 @@ document.addEventListener("DOMContentLoaded",async () => {
     
     document.getElementById("username").innerText = "@"+ userData?.prefs.username;
     document.getElementById("post-caption").placeholder+= userData?.name;
+    document.getElementById("userdp").src=userData?.prefs?.avatar;
     // document.querySelector(".text_muted").innerText = "@" + userData.username;
     // document.getElementById("userpic").src += userData.profilePic.src;
     // document.getElementById("profilephoto").src += userData.profilePic.src;
