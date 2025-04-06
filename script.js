@@ -156,6 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Handle login
                     const email = this.querySelector('input[type="email"]').value;
                     const password = this.querySelector('input[type="password"]').value;
+                    // console.log(email,password);
 
                     try {
                         await account.deleteSessions()

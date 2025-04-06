@@ -1,5 +1,6 @@
+
 // Appwrite SDK initialization
-const { Client, Account, ID } = Appwrite
+const { Client, Account, ID,Storage, Databases} = Appwrite
 
 // Initialize Appwrite Client
 const client = new Client();
@@ -16,17 +17,20 @@ const checkAuthStatus = async () => {
         // console.log('User is logged in:', user);
         // Handle logged in state (e.g., redirect to dashboard or show logged-in UI)
         // You can add your logic here
+        
         return user;
+
     } catch (error) {
         console.log('User is not logged in');
         // User is not logged in, show login/register UI
     }
 }
-
+;
+  
 document.addEventListener("DOMContentLoaded",async () => {
     
     const userData = await checkAuthStatus();
-    console.log(userData)
+    // console.log(userData)
     document.getElementById("avatar").src = userData?.prefs?.avatar
     document.getElementById("userpic").src = userData?.prefs?.avatar
     document.getElementById("username").innerText = userData?.name
@@ -34,5 +38,35 @@ document.addEventListener("DOMContentLoaded",async () => {
     document.getElementById("fullName").value = userData?.name
     document.getElementById("user-name").value = "@"+ userData?.prefs?.username
     document.getElementById("email").value = userData?.email
+    document.getElementsByClassName("userAvatar").value = userData?.prefs?.avatar
     });
+    
 
+  // Handle the password update
+  document.getElementById("updatePassword").addEventListener('click', async () => {
+    const currentPassword = document.getElementById('currentPassword');
+    const newPassword = document.getElementById('newPassword');
+    const confirmPassword = document.getElementById('confirmPassword');
+  
+    if (!newPassword.value || !confirmPassword.value) {
+      alert("Please fill all fields");
+      return;
+    }
+  
+    if (newPassword.value !== confirmPassword.value) {
+      alert("New passwords do not match.");
+      return;
+    }
+  
+    try {
+      await account.updatePassword(newPassword.value,currentPassword.value);
+      alert("Password updated successfully!");
+      currentPassword.value=""
+      newPassword.value=""
+      confirmPassword.value=""
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Failed to update password: " + error.message);
+    }
+  });
+  

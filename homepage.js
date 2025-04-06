@@ -1,3 +1,5 @@
+
+
 // Retrieve and display posts on page load
 window.addEventListener("load", function () {
     let savedPosts = JSON.parse(localStorage.getItem("posts")) || [];
@@ -20,7 +22,7 @@ window.addEventListener("load", function () {
 //     }, 2000);
 // }
 
-
+let userData;
 
 let stories = document.querySelector(".stories")
 
@@ -31,13 +33,22 @@ for (let i = 1; i <= 25; i++) {
         "Dmitri", "Yuki", "Hana", "Kai", "Amélie", "Sven", "Elina", "Felix", "Ines", "Rafaela",
         "Nikolai", "Ximena", "Thiago", "Mira", "Tobias", "Ivana", "Zoran", "Selma", "Otto", "Elio"
     ];
+    if(i==1){
+        stories.innerHTML += `
+    <div class="story">
+                        <img onclick="story_open()" class="storypic" src=https://images.pexels.com/photos/${415828 + i}/pexels-photo-${415828 + i}.jpeg?auto=compress&cs=tinysrgb&w=300" alt="">
+                        <img class="storyprofile" src="images/profile-1.jpg" alt="">
+                        <p>${i == 1 ? "Your Story" : foreignNames[i]}</p>
+         </div> `
+    }
+         else{
     stories.innerHTML += `
     <div class="story">
                         <img onclick="story_open()" class="storypic" src=https://images.pexels.com/photos/${415828 + i}/pexels-photo-${415828 + i}.jpeg?auto=compress&cs=tinysrgb&w=300" alt="">
                         <img class="storyprofile" src="images/profile-${i % 20 + 1}.jpg" alt="">
                         <p>${i == 1 ? "Your Story" : foreignNames[i]}</p>
          </div> `
-
+}
 }
 
 function story_open() {
@@ -155,7 +166,7 @@ document.querySelectorAll('.decline').forEach(button => {
 
 
 
-
+// post upload logic
 let selectedImage = null;
 
 // When an image is selected
@@ -204,14 +215,14 @@ document.getElementById("newpost").addEventListener("click", function () {
             <div class="postby ">
                 <div class="postnavleft item-centre flex">
                     <div class="post-profile ">
-                        <img src="${imgSrc}" alt="">
+                        <img src="${userData?.prefs?.avatar}" alt="">
                     </div>
                     <div class="profile_name">
-                        <h3>${profileName}</h3>
+                        <h3>${userData?.name}</h3>
                         <p>${countries[Math.floor(Math.random() * 20)]}, ${Math.floor(Math.random() * 60)} MINUTES AGO</p>
                     </div>
                 </div>
-                <div class="right">
+                <div class="right postmenu">
                     <i class="ri-more-2-line"></i>
                 </div>
             </div>
@@ -268,6 +279,144 @@ document.getElementById("newpost").addEventListener("click", function () {
 
 
 
+// const storage = new Appwrite.Storage(client);
+// const databases = new Appwrite.Databases(client);
+// let selectedImage = null;
+// let selectedFile = null;
+// let uploadedFileId = null;
+
+// const BUCKET_ID = '67f2604e0039bfba0d50';
+// const DATABASE_ID = '67f2615a000afd940198';
+// const COLLECTION_ID = '67f26177002a7afd7728';
+
+// // When an image is selected
+// document.getElementById("fileInput").addEventListener("change", function (event) {
+//     selectedFile = event.target.files[0];
+//     document.querySelector("#uploadpostimg p").innerText = selectedFile.name;
+
+//     if (selectedFile) {
+//         let reader = new FileReader();
+//         reader.onload = function (e) {
+//             selectedImage = e.target.result;
+//             document.getElementById("imagePreview").src = selectedImage;
+//             document.getElementById("imagePreview").style.display = "block";
+//             document.getElementById("postButton").disabled = false;
+//         };
+//         reader.readAsDataURL(selectedFile);
+//     }
+// });
+
+// const handleFileInput = () => {
+//     document.getElementById('fileInput').click();
+// };
+
+// let profileElement = document.getElementById("profilephoto");
+// let imgSrc = profileElement.src;
+
+// let profileNameElement = document.getElementById("profilename");
+// let profileName = profileNameElement.innerText;
+
+// // When the post button is clicked
+// document.getElementById("newpost").addEventListener("click", async function () {
+//     if (!selectedImage || !selectedFile) return;
+
+//     const countries = [
+//         "India", "United States", "Canada", "United Kingdom", "Australia",
+//         "Germany", "France", "Italy", "Spain", "Brazil",
+//         "Japan", "China", "Russia", "Mexico", "South Africa",
+//         "Argentina", "Saudi Arabia", "South Korea", "Netherlands", "Sweden"
+//     ];
+
+//     const caption = document.getElementById("post-caption");
+
+//     try {
+//         // Upload image to Appwrite Storage
+//         const uploaded = await storage.createFile(BUCKET_ID, ID.unique(), selectedFile);
+//         uploadedFileId = uploaded.$id;
+
+//         // Get public image URL
+//         const imageUrl = storage.getFileView(BUCKET_ID, uploadedFileId).href;
+
+//         // Create document in Appwrite Database
+//         await databases.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
+//             profileName: profileName,
+//             profilePhoto: imgSrc,
+//             image: imageUrl,
+//             caption: caption.value,
+//             location: countries[Math.floor(Math.random() * 20)],
+//             timeAgo: `${Math.floor(Math.random() * 60)} MINUTES AGO`,
+//             likes: Math.floor(Math.random() * (300 - 200 + 1)) + 200
+//         });
+
+//         // Post HTML (as before)
+//         let postHtml = `
+//             <div class="post">
+//                 <div class="postby">
+//                     <div class="postnavleft item-centre flex">
+//                         <div class="post-profile">
+//                             <img src="${imgSrc}" alt="">
+//                         </div>
+//                         <div class="profile_name">
+//                             <h3>${profileName}</h3>
+//                             <p>${countries[Math.floor(Math.random() * 20)]}, ${Math.floor(Math.random() * 60)} MINUTES AGO</p>
+//                         </div>
+//                     </div>
+//                     <div class="right">
+//                         <i class="ri-more-2-line"></i>
+//                     </div>
+//                 </div>
+//                 <div class="postimage">
+//                     <img src="${imageUrl}" alt="Uploaded Image">
+//                 </div>
+//                 <div class="postcaption flex space-between">
+//                     <div class="leftcaption">
+//                         <i class="ri-heart-line"></i>
+//                         <i class="ri-chat-1-line"></i>
+//                         <i class="ri-share-line"></i>
+//                     </div>
+//                     <div class="rightcaption">
+//                         <i class="ri-bookmark-line"></i>
+//                     </div>
+//                 </div>
+//                 <div class="postlikedby flex item-centre">
+//                     <div class="likedusers relative">
+//                         <img src="images/profile-19.jpg" alt="">
+//                         <img src="images/profile-18.jpg" alt="">
+//                         <img src="images/profile-17.jpg" alt="">
+//                     </div>
+//                     <p>
+//                         Liked by <b>Svetlana Blaz</b> and <b>${Math.floor(Math.random() * (300 - 200 + 1)) + 200}</b> others
+//                     </p>
+//                 </div>
+//                 <div class="postdescription">
+//                     <p>${caption.value}</p>
+//                     <p style="color: grey;">View all 265 comments</p>
+//                 </div>
+//             </div>
+//         `;
+
+//         // Insert into DOM
+//         document.querySelector(".posts").insertAdjacentHTML("afterbegin", postHtml);
+
+//         // Alert and reset
+//         alert("Posted");
+
+//         selectedImage = null;
+//         selectedFile = null;
+//         caption.value = "";
+//         document.querySelector("#uploadpostimg p").innerText = " ";
+//         document.getElementById("imagePreview").style.display = "none";
+//         document.getElementById("fileInput").value = "";
+//         document.getElementById("postButton").disabled = true;
+
+//     } catch (error) {
+//         console.error("Post upload failed:", error);
+//         alert("Something went wrong while uploading post!");
+//     }
+// });
+
+
+
 
 function closethemepanel() {
     document.querySelector(".themecontainer").innerHTML = ""
@@ -315,11 +464,11 @@ function showMenu() {
 }
 
 
-
+// let userData;
 document.addEventListener("DOMContentLoaded",async () => {
     
-    const userData = await checkAuthStatus();
-    console.log(userData?.prefs)
+    userData = await checkAuthStatus();
+    // console.log(userData?.prefs)
     document.getElementById("profilename").innerText = userData?.name;
     let avatar=document.querySelectorAll(".userAvatar").forEach(element => {
         element.src = userData?.prefs?.avatar

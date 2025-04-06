@@ -988,3 +988,6 @@ main .container .left .profile{
     font-weight: 600;
     font-size: 1.2rem;
 }
+.postmenu{
+    color:var(--main-text);
+}
