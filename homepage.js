@@ -167,158 +167,40 @@ document.querySelectorAll('.decline').forEach(button => {
 
 
 // post upload logic
-let selectedImage = null;
-
-// When an image is selected
-document.getElementById("fileInput").addEventListener("change", function (event) {
-    let file = event.target.files[0];
-
-    document.querySelector("#uploadpostimg p").innerText = file.name;
-
-    if (file) {
-        let reader = new FileReader();
-        reader.onload = function (e) {
-            selectedImage = e.target.result;
-            document.getElementById("imagePreview").src = selectedImage;
-            document.getElementById("imagePreview").style.display = "block";
-            document.getElementById("postButton").disabled = false;
-        };
-        reader.readAsDataURL(file);
-    }
-});
-
-const handleFileInput = () => {
-    document.getElementById('fileInput').click()
-}
-
-let profileElement = document.getElementById("profilephoto")
-let imgSrc = profileElement.src
-
-let profileNameElement = document.getElementById("profilename")
-let profileName = profileNameElement.innerText
-
-
-// When the post button is clicked
-document.getElementById("newpost").addEventListener("click", function () {
-    if (!selectedImage) return;
-
-    const countries = [
-        "India", "United States", "Canada", "United Kingdom", "Australia",
-        "Germany", "France", "Italy", "Spain", "Brazil",
-        "Japan", "China", "Russia", "Mexico", "South Africa",
-        "Argentina", "Saudi Arabia", "South Korea", "Netherlands", "Sweden"
-    ];
-
-    const caption = document.getElementById("post-caption");
-    let postHtml = `
-        <div class="post">
-            <div class="postby ">
-                <div class="postnavleft item-centre flex">
-                    <div class="post-profile ">
-                        <img src="${userData?.prefs?.avatar}" alt="">
-                    </div>
-                    <div class="profile_name">
-                        <h3>${userData?.name}</h3>
-                        <p>${countries[Math.floor(Math.random() * 20)]}, ${Math.floor(Math.random() * 60)} MINUTES AGO</p>
-                    </div>
-                </div>
-                <div class="right postmenu">
-                    <i class="ri-more-2-line"></i>
-                </div>
-            </div>
-            <div class="postimage">
-                <img src="${selectedImage}" alt="Uploaded Image">
-            </div>
-            <div class="postcaption flex space-between">
-                <div class="leftcaption">
-                    <i class="ri-heart-line"></i>
-                    <i class="ri-chat-1-line"></i>
-                    <i class="ri-share-line"></i>
-                </div>
-                <div class="rightcaption">
-                    <i class="ri-bookmark-line"></i>
-                </div>
-            </div>
-            <div class="postlikedby flex item-centre">
-                <div class="likedusers relative">
-                    <img src="images/profile-19.jpg" alt="">
-                    <img src="images/profile-18.jpg" alt="">
-                    <img src="images/profile-17.jpg" alt="">
-                </div>
-                <p>
-                    Liked by <b>Svetlana Blaz</b> and <b>${Math.floor(Math.random() * (300 - 200 + 1)) + 200}</b> others
-                </p>
-            </div>
-            <div class="postdescription">
-                <p>${caption.value}</p>
-                <p style="color: grey;">View all 265 comments</p>
-            </div>
-        </div>
-    `;
-
-    // Insert the post inside the `.posts` div
-    document.querySelector(".posts").insertAdjacentHTML("afterbegin", postHtml);
-    alert("Posted");
-
-    // Store post in local storage
-    let posts = JSON.parse(localStorage.getItem("posts")) || []; // Get existing posts
-    posts.unshift(postHtml); // Add new post at the beginning
-    localStorage.setItem("posts", JSON.stringify(posts)); // Save back to local storage
-
-    // Reset selected image
-    selectedImage = null;
-    caption.value = null;
-    document.querySelector("#uploadpostimg p").innerText = " ";
-
-    document.getElementById("imagePreview").style.display = "none";
-    document.getElementById("fileInput").value = null;
-    document.getElementById("postButton").disabled = true;
-
-});
-
-
-
-
-// const storage = new Appwrite.Storage(client);
-// const databases = new Appwrite.Databases(client);
 // let selectedImage = null;
-// let selectedFile = null;
-// let uploadedFileId = null;
-
-// const BUCKET_ID = '67f2604e0039bfba0d50';
-// const DATABASE_ID = '67f2615a000afd940198';
-// const COLLECTION_ID = '67f26177002a7afd7728';
 
 // // When an image is selected
 // document.getElementById("fileInput").addEventListener("change", function (event) {
-//     selectedFile = event.target.files[0];
-//     document.querySelector("#uploadpostimg p").innerText = selectedFile.name;
+//     let file = event.target.files[0];
 
-//     if (selectedFile) {
+//     document.querySelector("#uploadpostimg p").innerText = file.name;
+
+//     if (file) {
 //         let reader = new FileReader();
 //         reader.onload = function (e) {
 //             selectedImage = e.target.result;
 //             document.getElementById("imagePreview").src = selectedImage;
 //             document.getElementById("imagePreview").style.display = "block";
-//             document.getElementById("postButton").disabled = false;
+//             document.getElementById("newpost").disabled = false;
 //         };
-//         reader.readAsDataURL(selectedFile);
+//         reader.readAsDataURL(file);
 //     }
 // });
 
 // const handleFileInput = () => {
-//     document.getElementById('fileInput').click();
-// };
+//     document.getElementById('fileInput').click()
+// }
 
-// let profileElement = document.getElementById("profilephoto");
-// let imgSrc = profileElement.src;
+// let profileElement = document.getElementById("profilephoto")
+// let imgSrc = profileElement.src
 
-// let profileNameElement = document.getElementById("profilename");
-// let profileName = profileNameElement.innerText;
+// let profileNameElement = document.getElementById("profilename")
+// let profileName = profileNameElement.innerText
+
 
 // // When the post button is clicked
-// document.getElementById("newpost").addEventListener("click", async function () {
-//     if (!selectedImage || !selectedFile) return;
+// document.getElementById("newpost").addEventListener("click", function () {
+//     if (!selectedImage) return;
 
 //     const countries = [
 //         "India", "United States", "Canada", "United Kingdom", "Australia",
@@ -328,92 +210,212 @@ document.getElementById("newpost").addEventListener("click", function () {
 //     ];
 
 //     const caption = document.getElementById("post-caption");
-
-//     try {
-//         // Upload image to Appwrite Storage
-//         const uploaded = await storage.createFile(BUCKET_ID, ID.unique(), selectedFile);
-//         uploadedFileId = uploaded.$id;
-
-//         // Get public image URL
-//         const imageUrl = storage.getFileView(BUCKET_ID, uploadedFileId).href;
-
-//         // Create document in Appwrite Database
-//         await databases.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
-//             profileName: profileName,
-//             profilePhoto: imgSrc,
-//             image: imageUrl,
-//             caption: caption.value,
-//             location: countries[Math.floor(Math.random() * 20)],
-//             timeAgo: `${Math.floor(Math.random() * 60)} MINUTES AGO`,
-//             likes: Math.floor(Math.random() * (300 - 200 + 1)) + 200
-//         });
-
-//         // Post HTML (as before)
-//         let postHtml = `
-//             <div class="post">
-//                 <div class="postby">
-//                     <div class="postnavleft item-centre flex">
-//                         <div class="post-profile">
-//                             <img src="${imgSrc}" alt="">
-//                         </div>
-//                         <div class="profile_name">
-//                             <h3>${profileName}</h3>
-//                             <p>${countries[Math.floor(Math.random() * 20)]}, ${Math.floor(Math.random() * 60)} MINUTES AGO</p>
-//                         </div>
+//     let postHtml = `
+//         <div class="post">
+//             <div class="postby ">
+//                 <div class="postnavleft item-centre flex">
+//                     <div class="post-profile ">
+//                         <img src="${userData?.prefs?.avatar}" alt="">
 //                     </div>
-//                     <div class="right">
-//                         <i class="ri-more-2-line"></i>
+//                     <div class="profile_name">
+//                         <h3>${userData?.name}</h3>
+//                         <p>${countries[Math.floor(Math.random() * 20)]}, ${Math.floor(Math.random() * 60)} MINUTES AGO</p>
 //                     </div>
 //                 </div>
-//                 <div class="postimage">
-//                     <img src="${imageUrl}" alt="Uploaded Image">
-//                 </div>
-//                 <div class="postcaption flex space-between">
-//                     <div class="leftcaption">
-//                         <i class="ri-heart-line"></i>
-//                         <i class="ri-chat-1-line"></i>
-//                         <i class="ri-share-line"></i>
-//                     </div>
-//                     <div class="rightcaption">
-//                         <i class="ri-bookmark-line"></i>
-//                     </div>
-//                 </div>
-//                 <div class="postlikedby flex item-centre">
-//                     <div class="likedusers relative">
-//                         <img src="images/profile-19.jpg" alt="">
-//                         <img src="images/profile-18.jpg" alt="">
-//                         <img src="images/profile-17.jpg" alt="">
-//                     </div>
-//                     <p>
-//                         Liked by <b>Svetlana Blaz</b> and <b>${Math.floor(Math.random() * (300 - 200 + 1)) + 200}</b> others
-//                     </p>
-//                 </div>
-//                 <div class="postdescription">
-//                     <p>${caption.value}</p>
-//                     <p style="color: grey;">View all 265 comments</p>
+//                 <div class="right postmenu">
+//                     <i class="ri-more-2-line"></i>
 //                 </div>
 //             </div>
-//         `;
+//             <div class="postimage">
+//                 <img src="${selectedImage}" alt="Uploaded Image">
+//             </div>
+//             <div class="postcaption flex space-between">
+//                 <div class="leftcaption">
+//                     <i class="ri-heart-line"></i>
+//                     <i class="ri-chat-1-line"></i>
+//                     <i class="ri-share-line"></i>
+//                 </div>
+//                 <div class="rightcaption">
+//                     <i class="ri-bookmark-line"></i>
+//                 </div>
+//             </div>
+//             <div class="postlikedby flex item-centre">
+//                 <div class="likedusers relative">
+//                     <img src="images/profile-19.jpg" alt="">
+//                     <img src="images/profile-18.jpg" alt="">
+//                     <img src="images/profile-17.jpg" alt="">
+//                 </div>
+//                 <p>
+//                     Liked by <b>Svetlana Blaz</b> and <b>${Math.floor(Math.random() * (300 - 200 + 1)) + 200}</b> others
+//                 </p>
+//             </div>
+//             <div class="postdescription">
+//                 <p>${caption.value}</p>
+//                 <p style="color: grey;">View all 265 comments</p>
+//             </div>
+//         </div>
+//     `;
 
-//         // Insert into DOM
-//         document.querySelector(".posts").insertAdjacentHTML("afterbegin", postHtml);
+//     // Insert the post inside the `.posts` div
+//     document.querySelector(".posts").insertAdjacentHTML("afterbegin", postHtml);
+//     alert("Posted");
 
-//         // Alert and reset
-//         alert("Posted");
+//     // Store post in local storage
+//     let posts = JSON.parse(localStorage.getItem("posts")) || []; // Get existing posts
+//     posts.unshift(postHtml); // Add new post at the beginning
+//     localStorage.setItem("posts", JSON.stringify(posts)); // Save back to local storage
 
-//         selectedImage = null;
-//         selectedFile = null;
-//         caption.value = "";
-//         document.querySelector("#uploadpostimg p").innerText = " ";
-//         document.getElementById("imagePreview").style.display = "none";
-//         document.getElementById("fileInput").value = "";
-//         document.getElementById("postButton").disabled = true;
+//     // Reset selected image
+//     selectedImage = null;
+//     caption.value = null;
+//     document.querySelector("#uploadpostimg p").innerText = " ";
 
-//     } catch (error) {
-//         console.error("Post upload failed:", error);
-//         alert("Something went wrong while uploading post!");
-//     }
+//     document.getElementById("imagePreview").style.display = "none";
+//     document.getElementById("fileInput").value = null;
+//     document.getElementById("newpost").disabled = true;
+
 // });
+
+
+
+
+const database = new Appwrite.Databases(client);
+const storage = new Appwrite.Storage(client);
+let selectedImage = null;
+let selectedFile = null;
+let uploadedFileId = null;
+
+const BUCKET_ID = '67f2604e0039bfba0d50';
+const DATABASE_ID = '67f2615a000afd940198';
+const COLLECTION_ID = '67f26177002a7afd7728';
+
+// When an image is selected
+document.getElementById("fileInput").addEventListener("change", function (event) {
+    selectedFile = event.target.files[0];
+    document.querySelector("#uploadpostimg p").innerText = selectedFile.name;
+
+    if (selectedFile) {
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            selectedImage = e.target.result;
+            document.getElementById("newpost").disabled = false;
+        };
+        reader.readAsDataURL(selectedFile);
+    }
+});
+
+const handleFileInput = () => {
+    document.getElementById('fileInput').click();
+};
+
+let profileElement = document.getElementById("profilephoto");
+let imgSrc = profileElement.src;
+
+let profileNameElement = document.getElementById("profilename");
+let profileName = profileNameElement.innerText;
+
+// When the post button is clicked
+document.getElementById("newpost").addEventListener("click", async function () {
+    if (!selectedImage || !selectedFile) return;
+
+    const countries = [
+        "India", "United States", "Canada", "United Kingdom", "Australia",
+        "Germany", "France", "Italy", "Spain", "Brazil",
+        "Japan", "China", "Russia", "Mexico", "South Africa",
+        "Argentina", "Saudi Arabia", "South Korea", "Netherlands", "Sweden"
+    ];
+
+    const caption = document.getElementById("post-caption");
+
+    try {
+        // Upload image to Appwrite Storage
+        const uploaded = await storage.createFile(BUCKET_ID, ID.unique(), selectedFile);
+        uploadedFileId = uploaded.$id;
+        // console.log("error1");
+        
+        // Get public image URL
+        const imageUrl = await storage.getFileView(BUCKET_ID, uploadedFileId).href;
+        // console.log("error2");
+        // Create document in Appwrite Database
+        try {
+            await database.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
+                profileName: profileName,
+                profilePhoto: imgSrc,
+                image: imageUrl,
+                caption: caption.value,
+                location: countries[Math.floor(Math.random() * 20)],
+                timeAgo: `${Math.floor(Math.random() * 60)} MINUTES AGO`,
+                likes: Math.floor(Math.random() * (300 - 200 + 1)) + 200
+            });
+        } catch (error) {
+            
+            console.log("Error: " , error);
+        }
+        // Post HTML (as before)
+        let postHtml = `
+            <div class="post">
+                <div class="postby">
+                    <div class="postnavleft item-centre flex">
+                        <div class="post-profile">
+                            <img src="${userData?.prefs?.avatar}" alt="">
+                        </div>
+                        <div class="profile_name">
+                            <h3>${userData.name}</h3>
+                            <p>${countries[Math.floor(Math.random() * 20)]}, ${Math.floor(Math.random() * 60)} MINUTES AGO</p>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <i class="ri-more-2-line"></i>
+                    </div>
+                </div>
+                <div class="postimage">
+                    <img src="${imageUrl}" alt="Uploaded Image">
+                </div>
+                <div class="postcaption flex space-between">
+                    <div class="leftcaption">
+                        <i class="ri-heart-line"></i>
+                        <i class="ri-chat-1-line"></i>
+                        <i class="ri-share-line"></i>
+                    </div>
+                    <div class="rightcaption">
+                        <i class="ri-bookmark-line"></i>
+                    </div>
+                </div>
+                <div class="postlikedby flex item-centre">
+                    <div class="likedusers relative">
+                        <img src="images/profile-19.jpg" alt="">
+                        <img src="images/profile-18.jpg" alt="">
+                        <img src="images/profile-17.jpg" alt="">
+                    </div>
+                    <p>
+                        Liked by <b>Svetlana Blaz</b> and <b>${Math.floor(Math.random() * (300 - 200 + 1)) + 200}</b> others
+                    </p>
+                </div>
+                <div class="postdescription">
+                    <p>${caption.value}</p>
+                    <p style="color: grey;">View all 265 comments</p>
+                </div>
+            </div>
+        `;
+
+        // Insert into DOM
+        document.querySelector(".posts").insertAdjacentHTML("afterbegin", postHtml);
+
+        // Alert and reset
+        alert("Posted");
+
+        selectedImage = null;
+        selectedFile = null;
+        caption.value = "";
+        document.querySelector("#uploadpostimg p").innerText = " ";
+        document.getElementById("fileInput").value = "";
+        document.getElementById("newpost").disabled = true;
+
+    } catch (error) {
+        console.error("Post upload failed:", error);
+        alert("Something went wrong while uploading post!");
+    }
+});
 
 
 
