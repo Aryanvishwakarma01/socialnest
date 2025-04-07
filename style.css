@@ -994,3 +994,6 @@ main .container .left .profile{
 .postmenu{
     color:var(--main-text);
 }
+#postmenu{
+    color:var(--main-text);
+}

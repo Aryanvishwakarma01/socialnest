@@ -21,7 +21,7 @@ window.addEventListener("load", function () {
                             </div>
                         </div>
                         <div class="right">
-                            <i class="ri-more-2-line"></i>
+                            <i id="postmenu" class="ri-more-2-line"></i>
                         </div>
                     </div>
                     <div class="postimage">
