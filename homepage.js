@@ -385,7 +385,7 @@ document.getElementById("newpost").addEventListener("click", async function () {
         try {
             await database.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
                 profileName: userData.name,
-                profilePhoto: imgSrc,
+                profilePhoto: userData?.prefs?.avatar,
                 image: imageUrl,
                 caption: caption.value,
                 location: countries[Math.floor(Math.random() * 20)],
