@@ -2,12 +2,65 @@
 
 // Retrieve and display posts on page load
 window.addEventListener("load", function () {
-    let savedPosts = JSON.parse(localStorage.getItem("posts")) || [];
+    database.listDocuments(
+        DATABASE_ID,     // Replace with your Database ID
+        COLLECTION_ID    // Replace with your Collection ID
+      ).then(response => {
+        response.documents.forEach(post => {
+            document.querySelector(".posts").insertAdjacentHTML("afterbegin", 
+                 `
+                <div class="post">
+                    <div class="postby">
+                        <div class="postnavleft item-centre flex">
+                            <div class="post-profile">
+                                <img src="${post.profilePhoto}" alt="">
+                            </div>
+                            <div class="profile_name">
+                                <h3>${post.profileName}</h3>
+                                <p>${post.location}, ${post.timeAgo} MINUTES AGO</p>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <i class="ri-more-2-line"></i>
+                        </div>
+                    </div>
+                    <div class="postimage">
+                        <img src="${post.image}" alt="Uploaded Image">
+                    </div>
+                    <div class="postcaption flex space-between">
+                        <div class="leftcaption">
+                            <i class="ri-heart-line"></i>
+                            <i class="ri-chat-1-line"></i>
+                            <i class="ri-share-line"></i>
+                        </div>
+                        <div class="rightcaption">
+                            <i class="ri-bookmark-line"></i>
+                        </div>
+                    </div>
+                    <div class="postlikedby flex item-centre">
+                        <div class="likedusers relative">
+                            <img src="images/profile-19.jpg" alt="">
+                            <img src="images/profile-18.jpg" alt="">
+                            <img src="images/profile-17.jpg" alt="">
+                        </div>
+                        <p>
+                            Liked by <b>Svetlana Blaz</b> and <b>${post.likes}</b> others
+                        </p>
+                    </div>
+                    <div class="postdescription">
+                        <p>${post.caption}</p>
+                        <p style="color: grey;">View all 265 comments</p>
+                    </div>
+                </div>
+            `
+            );
+        });
+      }).catch(error => {
+        console.error("Error fetching posts:", error);
+      });
     let savedTheme = localStorage.getItem("themeColor")
     changeBackground(savedTheme)
-    savedPosts.forEach(post => {
-        document.querySelector(".posts").insertAdjacentHTML("afterbegin", post);
-    });
+    
 });
 
 // function story_open() {
@@ -276,18 +329,10 @@ document.querySelectorAll('.decline').forEach(button => {
 
 // });
 
-
-
-
-const database = new Appwrite.Databases(client);
-const storage = new Appwrite.Storage(client);
 let selectedImage = null;
 let selectedFile = null;
 let uploadedFileId = null;
 
-const BUCKET_ID = '67f2604e0039bfba0d50';
-const DATABASE_ID = '67f2615a000afd940198';
-const COLLECTION_ID = '67f26177002a7afd7728';
 
 // When an image is selected
 document.getElementById("fileInput").addEventListener("change", function (event) {
@@ -339,7 +384,7 @@ document.getElementById("newpost").addEventListener("click", async function () {
         // Create document in Appwrite Database
         try {
             await database.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
-                profileName: profileName,
+                profileName: userData.name,
                 profilePhoto: imgSrc,
                 image: imageUrl,
                 caption: caption.value,

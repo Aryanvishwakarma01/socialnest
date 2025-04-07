@@ -11,6 +11,14 @@ client
 // Initialize Appwrite Account
 const account = new Account(client);
 
+const database = new Appwrite.Databases(client);
+const storage = new Appwrite.Storage(client);
+
+const BUCKET_ID = '67f2604e0039bfba0d50';
+const DATABASE_ID = '67f2615a000afd940198';
+const COLLECTION_ID = '67f26177002a7afd7728';
+
+
 const checkAuthStatus = async () => {
     try {
         const user = await account.get();
