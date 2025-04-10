@@ -593,6 +593,7 @@ main .container .left .profile{
     background-color: var(--background-nav);
     padding: 10px;
     border-radius: 20px;
+    position: relative;
     margin-bottom: 15px;
 }
 .profile_name h3{
@@ -991,9 +992,33 @@ main .container .left .profile{
     font-weight: 600;
     font-size: 1.2rem;
 }
-.postmenu{
+.postmenu-wrapper{
     color:var(--main-text);
 }
 #postmenu{
     color:var(--main-text);
+    cursor: pointer;
 }
+.deletePost {
+    position: absolute;
+    right: 4%;
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    background-color: grey;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.deletePost:hover {
+    background-color: rgb(3, 3, 3);
+    color: white;
+    transform: scale(1.05);
+}
+
+.postmenu{
+    color:white;
+    cursor: pointer;
+}   

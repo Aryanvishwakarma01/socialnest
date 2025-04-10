@@ -1,6 +1,6 @@
 
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
     const tabBtns = document.querySelectorAll('.tab-btn');
     const forms = document.querySelectorAll('.form');
     const formWrapper = document.querySelector('.form-wrapper');
@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // Check if user is already logged in
-    checkAuthStatus();
+    const userData = await checkAuthStatus();
+
 
     // Initialize theme based on system preference
     initializeTheme();
@@ -166,10 +167,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     // Appwrite email session login
                     await account.createEmailSession(email, password);
-                    console.log('Login successful');
+                    // console.log('Login successful');
 
                     // Handle successful login (e.g., redirect to dashboard)
-                    handleSuccessfulAuth('Login successful!');
+                    handleSuccessfulAuth('Login successful! - Welcome to Social Nest');
 
 
                 } else {
@@ -178,6 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const username = this.querySelector('input[id="user-name"]')?.value || '';
                     const email = this.querySelector('input[type="email"]').value;
                     const password = this.querySelector('input[type="password"]').value;
+                    const gender = document.querySelector('input[name="gender"]:checked').value;
                     // const dob = document.getElementById('dob').value;
                     const avatar = `https://api.dicebear.com/7.x/initials/svg?seed=${name}&backgroundColor=ff5733&fontSize=50`
 
@@ -216,9 +218,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                     // Auto login after registration
                     await account.createEmailSession(email, password);
-                    await account.updatePrefs({ username, avatar })
+                    await account.updatePrefs({ username, avatar, gender })
                     console.log("You are logged in Successfully")
-                    handleSuccessfulAuth('Login successful!');
+                    handleSuccessfulAuth('Login successful! - Welcome to Social Nest');
 
                 }
 

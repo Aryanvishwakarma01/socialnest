@@ -25,11 +25,14 @@ const checkAuthStatus = async () => {
         // console.log('User is logged in:', user);
         // Handle logged in state (e.g., redirect to dashboard or show logged-in UI)
         // You can add your logic here
-        
+        // if(!user){ window.location.pathname = "/"
+        //   return;
+        // }
         return user;
 
     } catch (error) {
         console.log('User is not logged in');
+        return false
         // User is not logged in, show login/register UI
     }
 }
@@ -38,6 +41,7 @@ const checkAuthStatus = async () => {
 document.addEventListener("DOMContentLoaded",async () => {
     
     const userData = await checkAuthStatus();
+    
     // console.log(userData)
     document.getElementById("avatar").src = userData?.prefs?.avatar
     document.getElementById("userpic").src = userData?.prefs?.avatar
@@ -47,6 +51,7 @@ document.addEventListener("DOMContentLoaded",async () => {
     document.getElementById("user-name").value = "@"+ userData?.prefs?.username
     document.getElementById("email").value = userData?.email
     document.getElementsByClassName("userAvatar").value = userData?.prefs?.avatar
+    document.getElementById("gender").value = userData?.prefs?.gender
     });
     
 
@@ -78,3 +83,6 @@ document.addEventListener("DOMContentLoaded",async () => {
     }
   });
   
+
+
+

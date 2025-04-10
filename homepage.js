@@ -1,15 +1,49 @@
+// Function to delete a post
+async function deletePost(documentId) {
+    try {
 
+      await database.deleteDocument(DATABASE_ID, COLLECTION_ID, documentId);
+       document.getElementById(documentId).remove()
+      alert('Post deleted successfully!');
+    } catch (error) {
+      console.error('Failed to delete post:', error.message);
+      alert('Failed to delete post. Check console for details.');
+    }
+  }
+  
+  // Attach event listener to delete buttons
+//   function attachDeleteListeners() {
+//     const deleteButtons = document.querySelectorAll('.deletePost');
+//     deleteButtons.forEach((btn) => {
+//       btn.addEventListener('click', () => {
+//         const postId = btn.getAttribute('data-post-id');
+//         if (confirm('Are you sure you want to delete this post?')) {
+//           deletePost(postId);
+//         }
+//       });
+//     });
+//   }
+
+function postMenu(elem) {
+    const deleteBtn = elem.querySelector('.deletePost');
+    if (deleteBtn.style.display === "none" || !deleteBtn.style.display) {
+      deleteBtn.style.display = "block";
+    } else {
+      deleteBtn.style.display = "none";
+    }
+  }
+  
 
 // Retrieve and display posts on page load
 window.addEventListener("load", function () {
     database.listDocuments(
         DATABASE_ID,     // Replace with your Database ID
         COLLECTION_ID    // Replace with your Collection ID
-      ).then(response => {
+    ).then(response => {
         response.documents.forEach(post => {
-            document.querySelector(".posts").insertAdjacentHTML("afterbegin", 
-                 `
-                <div class="post">
+            document.querySelector(".posts").insertAdjacentHTML("afterbegin",
+                `
+                <div class="post" id="${post.$id}">
                     <div class="postby">
                         <div class="postnavleft item-centre flex">
                             <div class="post-profile">
@@ -20,9 +54,12 @@ window.addEventListener("load", function () {
                                 <p>${post.location}, ${post.timeAgo} MINUTES AGO</p>
                             </div>
                         </div>
-                        <div class="right">
-                            <i id="postmenu" class="ri-more-2-line"></i>
-                        </div>
+                        ${(post.ownerId === userData.$id) ? `<div class="right">
+                            <div class="postmenu-wrapper" onclick="postMenu(this)">
+                                    <i class="ri-more-2-line"></i>
+                                    <button data-post-id="${post.$id}" onclick="deletePost('${post.$id}')" class="deletePost" style="display:none;">Delete</button>
+                            </div>       
+                        </div>` : ""}
                     </div>
                     <div class="postimage">
                         <img src="${post.image}" alt="Uploaded Image">
@@ -55,13 +92,14 @@ window.addEventListener("load", function () {
             `
             );
         });
-      }).catch(error => {
+    }).catch(error => {
         console.error("Error fetching posts:", error);
-      });
+    });
     let savedTheme = localStorage.getItem("themeColor")
     changeBackground(savedTheme)
-    
+
 });
+
 
 // function story_open() {
 //     let img = document.getElementsByClassName("storypic");
@@ -80,13 +118,13 @@ window.addEventListener("load", function () {
 let stories = document.querySelector(".stories")
 
 for (let i = 1; i <= 25; i++) {
-   
+
     const foreignNames = [
         "Alejandro", "Sofia", "Matteo", "Isla", "Léon", "Freja", "Hugo", "Emilia", "Luca", "Anya",
         "Dmitri", "Yuki", "Hana", "Kai", "Amélie", "Sven", "Elina", "Felix", "Ines", "Rafaela",
         "Nikolai", "Ximena", "Thiago", "Mira", "Tobias", "Ivana", "Zoran", "Selma", "Otto", "Elio"
     ];
-    if(i==1){
+    if (i == 1) {
         stories.innerHTML += `
     <div class="story">
                         <img onclick="story_open()" class="storypic" src=https://images.pexels.com/photos/${415828 + i}/pexels-photo-${415828 + i}.jpeg?auto=compress&cs=tinysrgb&w=300" alt="">
@@ -94,14 +132,14 @@ for (let i = 1; i <= 25; i++) {
                         <p>${i == 1 ? "Your Story" : foreignNames[i]}</p>
          </div> `
     }
-         else{
-    stories.innerHTML += `
+    else {
+        stories.innerHTML += `
     <div class="story">
                         <img onclick="story_open()" class="storypic" src=https://images.pexels.com/photos/${415828 + i}/pexels-photo-${415828 + i}.jpeg?auto=compress&cs=tinysrgb&w=300" alt="">
                         <img class="storyprofile" src="images/profile-${i % 20 + 1}.jpg" alt="">
                         <p>${i == 1 ? "Your Story" : foreignNames[i]}</p>
          </div> `
-}
+    }
 }
 
 function story_open() {
@@ -377,14 +415,16 @@ document.getElementById("newpost").addEventListener("click", async function () {
         const uploaded = await storage.createFile(BUCKET_ID, ID.unique(), selectedFile);
         uploadedFileId = uploaded.$id;
         // console.log("error1");
-        
+
         // Get public image URL
         const imageUrl = await storage.getFileView(BUCKET_ID, uploadedFileId).href;
         // console.log("error2");
         // Create document in Appwrite Database
+         let newPost;
         try {
-            await database.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
+            newPost = await database.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique() , {
                 profileName: userData.name,
+                ownerId: userData.$id,
                 profilePhoto: userData?.prefs?.avatar,
                 image: imageUrl,
                 caption: caption.value,
@@ -393,12 +433,13 @@ document.getElementById("newpost").addEventListener("click", async function () {
                 likes: Math.floor(Math.random() * (300 - 200 + 1)) + 200
             });
         } catch (error) {
-            
-            console.log("Error: " , error);
+
+            console.log("Error: ", error);
         }
+        const postId = newPost.$id;
         // Post HTML (as before)
         let postHtml = `
-            <div class="post">
+            <div class="post" id="${postId}">
                 <div class="postby">
                     <div class="postnavleft item-centre flex">
                         <div class="post-profile">
@@ -410,8 +451,11 @@ document.getElementById("newpost").addEventListener("click", async function () {
                         </div>
                     </div>
                     <div class="right">
-                        <i class="ri-more-2-line"></i>
-                    </div>
+                            <div class="postmenu-wrapper" onclick="postMenu(this)">
+                                    <i class="ri-more-2-line"></i>
+                                    <button data-post-id="${postId}" onclick="deletePost('${postId}')" class="deletePost" style="display:none;">Delete</button> 
+                            </div>       
+                        </div>
                 </div>
                 <div class="postimage">
                     <img src="${imageUrl}" alt="Uploaded Image">
@@ -464,7 +508,6 @@ document.getElementById("newpost").addEventListener("click", async function () {
 
 
 
-
 function closethemepanel() {
     document.querySelector(".themecontainer").innerHTML = ""
 }
@@ -512,25 +555,52 @@ function showMenu() {
 
 
 // let userData;
-document.addEventListener("DOMContentLoaded",async () => {
-    
-    userData = await checkAuthStatus();
+document.addEventListener("DOMContentLoaded", async () => {
+
+     userData=await checkAuthStatus();
+
+
     // console.log(userData?.prefs)
     document.getElementById("profilename").innerText = userData?.name;
-    let avatar=document.querySelectorAll(".userAvatar").forEach(element => {
+    let avatar = document.querySelectorAll(".userAvatar").forEach(element => {
         element.src = userData?.prefs?.avatar
     });
     // console.log(avatar);
-    
-    document.getElementById("username").innerText = "@"+ userData?.prefs.username;
-    document.getElementById("post-caption").placeholder+= userData?.name;
-    document.getElementById("userdp").src=userData?.prefs?.avatar;
+
+    document.getElementById("username").innerText = "@" + userData?.prefs.username;
+    document.getElementById("post-caption").placeholder += userData?.name;
+    document.getElementById("userdp").src = userData?.prefs?.avatar;
     // document.querySelector(".text_muted").innerText = "@" + userData.username;
     // document.getElementById("userpic").src += userData.profilePic.src;
     // document.getElementById("profilephoto").src += userData.profilePic.src;
 
 });
 
-document.getElementById("userpic").addEventListener("click", function(){
-    window.location.href="profile/profile.html"
+document.getElementById("userpic").addEventListener("click", function () {
+    window.location.href = "profile/profile.html"
 })
+
+
+function logout(){
+    account.deleteSession('current')
+        .then(() => {
+            // Session deleted successfully
+            window.location.href = "index.html";
+        })
+        .catch((error) => {
+            console.error("Logout failed:", error);
+        });
+}
+
+window.onload = function () {
+  account.get()
+      .then((response) => {
+          console.log("User is logged in:", response);
+          // You can show the user's name or profile here if needed
+      })
+      .catch((error) => {
+          // No valid session found, redirect to login
+          console.warn("User not logged in:", error);
+          window.location.href = "index.html";
+      });
+};

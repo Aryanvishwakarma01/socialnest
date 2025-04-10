@@ -7,7 +7,9 @@
 .item-centre{
     align-items: center;
 }
-
+.hidden {
+    display: none;
+}
 .space-between{
     justify-content: space-between;
 }

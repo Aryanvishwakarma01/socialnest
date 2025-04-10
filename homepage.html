@@ -10,7 +10,6 @@
     <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
     <link rel="stylesheet" href="./util.css">
     <script src="https://cdn.jsdelivr.net/npm/appwrite@11.0.0"></script>
-    
 </head>
 
 <body>
@@ -48,7 +47,7 @@
                         <img id="profilephoto" class="userAvatar" src="defprofile.png" alt="">
                     </div>
                     <div class="handle">
-                        <h4 id="profilename">Aryan Vishwakarma</h4>
+                        <h4 id="profilename"></h4>
                         <p class="text_muted" id="username"></p>
                     </div>
                 </a>
@@ -128,9 +127,7 @@
                         <span><i class="ri-settings-2-line"></i></span>
                         <h3>Settings</h3>
                     </a>
-                    <a class="menu_item" href="index.html" onclick="() =>{
-                         window.history.replaceState({}, document.title, window.location.pathname);
-                    }">
+                    <a class="menu_item" href="index.html" onclick="logout()">
                         <span><i  class="ri-logout-circle-line"></i></span>
                         <h3>Log Out</h3>
                     </a>
@@ -397,14 +394,17 @@
         </div>
     </main>
     
+    <!-- <script type="module">
+        import { attachDeleteListeners } from 'appwrite.js';
+      
+        // Call the function after rendering posts
+        attachDeleteListeners();
+      </script> -->
 
-
-    <script src="appwrite.js"></script>
+      <script src="appwrite.js"></script>
     <script src="sitetheme.js"></script>
     <script src="homepage.js" ></script>
 
-    <!-- <script src="login.js"></script> -->
-    <!-- <script src="registration.js"></script> -->
 </body>
 
 </html>
