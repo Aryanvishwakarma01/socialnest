@@ -38,21 +38,39 @@ const checkAuthStatus = async () => {
 }
 ;
   let userData;
-document.addEventListener("DOMContentLoaded",async () => {
-    
-   userData = await checkAuthStatus();
-    // if(!userData ) return;
-    // console.log(userData)
-    document.getElementById("avatar").src = userData?.prefs?.avatar
-    document.getElementById("userpic").src = userData?.prefs?.avatar
-    document.getElementById("username").innerText = userData?.name
-    document.getElementById("userid").innerText = "@"+userData?.prefs.username
-    document.getElementById("fullName").value = userData?.name
-    document.getElementById("user-name").value = "@"+ userData?.prefs?.username
-    document.getElementById("email").value = userData?.email
-    document.getElementsByClassName("userAvatar").value = userData?.prefs?.avatar
-    document.getElementById("gender").value = userData?.prefs?.gender
+  document.addEventListener("DOMContentLoaded", async () => {
+    userData = await checkAuthStatus();
+    if (!userData) return;
+
+    const avatar = document.getElementById("avatar");
+    if (avatar) avatar.src = userData?.prefs?.avatar;
+
+    const userpic = document.getElementById("userpic");
+    if (userpic) userpic.src = userData?.prefs?.avatar;
+
+    const username = document.getElementById("username");
+    if (username) username.innerText = userData?.name;
+
+    const userid = document.getElementById("userid");
+    if (userid) userid.innerText = "@" + userData?.prefs?.username;
+
+    const fullName = document.getElementById("fullName");
+    if (fullName) fullName.value = userData?.name;
+
+    const userNameField = document.getElementById("user-name");
+    if (userNameField) userNameField.value = "@" + userData?.prefs?.username;
+
+    const email = document.getElementById("email");
+    if (email) email.value = userData?.email;
+
+    const gender = document.getElementById("gender");
+    if (gender) gender.value = userData?.prefs?.gender;
+
+    document.querySelectorAll(".userAvatar").forEach(el => {
+        el.src = userData?.prefs?.avatar;
     });
+});
+
     
 
   // Handle the password update

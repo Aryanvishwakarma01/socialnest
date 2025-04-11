@@ -32,7 +32,7 @@
             <div class="logo flex items-centre">
                 <button class="btn" for="create-post ">Create</button>
                 <div class="profile_photo">
-                    <img id="userpic" class="userAvatar" src="defprofile.png" alt="">
+                    <img id="userdp" class="userAvatar" src="defprofile.png" alt="">
                 </div>
             </div>
         </div>
@@ -40,21 +40,21 @@
 
     <main>
         <div class="mypost-heading ">
-            <div class="mypost-text"><i onclick="homepage()" class="ri-arrow-left-line back"></i><h3> 
-                My Posts</h3>  
+            <div class="mypost-text"><i onclick="homepage()" class="ri-arrow-left-line back"></i>
+                <h3> <i class="ri-image-2-fill"></i> &nbsp; My Posts</h3>  
             </div>
-               <div class="posts">
+        </div>
+        <div class="posts">
 
-               </div>
         </div>
     </main>
+    <script src="/appwrite.js"></script>
     <script>
         window.addEventListener("DOMContentLoaded", () => {
             const theme = localStorage.getItem("themeColor");
             changeBackground(theme)
         })
         </script>
-        <script src="appwrite.js"></script>
         <script src="sitetheme.js"></script>
     <script src="mypost.js"></script>
 </body>

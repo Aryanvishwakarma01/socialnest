@@ -595,7 +595,7 @@ function logout(){
 window.onload = function () {
   account.get()
       .then((response) => {
-          console.log("User is logged in:", response);
+        //   console.log("User is logged in:", response);
           // You can show the user's name or profile here if needed
       })
       .catch((error) => {

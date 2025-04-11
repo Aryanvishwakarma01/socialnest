@@ -16,7 +16,7 @@ body{
 nav{
     padding: 10px 20px;
     width: 100%;
-    position: fixed;
+    position: sticky;
     z-index: 100;
     background-color: var(--background-nav);
 }
@@ -128,25 +128,21 @@ nav .container{
 main{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
 }
 
 .mypost-heading{
-    position: absolute;
-    display: flex;
     font-size: 0.8rem;
-    flex-direction: column;
-    gap: 12px 0;
     padding: 20px;
-    width: 100vw;
-    margin:20px;
-    top:6%;
-    margin-bottom: 20px;
+    width: 100%;
 }
 .mypost-text{
     font-size: 1.5rem;
     text-align: center;
-    align-items: center;
     color:var(--main-text);
+    margin:10px 0px;
 }
 .back{
     position: absolute;
@@ -158,15 +154,28 @@ main{
 /* post design */
 
 .posts{
-    width: 50%;
-    margin: auto;
+    width: 100%;
+    /* margin: auto; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
+
 .post{
     background-color: var(--background-nav);
     padding: 10px;
     border-radius: 20px;
     position: relative;
     margin-bottom: 15px;
+    width: 40%;
+}
+@media screen and (max-width:431px) {
+    .post{
+        width: 95%;
+        margin: 5px;
+    }
+    
 }
 .profile_name h3{
     font-size: 0.8rem;
@@ -181,7 +190,7 @@ main{
     gap:10px;
 }
 .postby{
-    padding: 6px 0;
+    padding: 6px 6px;
     display: flex;
     justify-content: space-between;
 
