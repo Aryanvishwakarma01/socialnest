@@ -37,11 +37,11 @@ const checkAuthStatus = async () => {
     }
 }
 ;
-  
+  let userData;
 document.addEventListener("DOMContentLoaded",async () => {
     
-    const userData = await checkAuthStatus();
-    
+   userData = await checkAuthStatus();
+    // if(!userData ) return;
     // console.log(userData)
     document.getElementById("avatar").src = userData?.prefs?.avatar
     document.getElementById("userpic").src = userData?.prefs?.avatar

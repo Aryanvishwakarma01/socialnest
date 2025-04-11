@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My posts</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="myPosts.css">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="sitetheme.css">
+    <link rel="stylesheet" href="util.css">
+    <script>
+        function homepage(){
+            window.location.href="homepage.html"
+        }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/appwrite@11.0.0"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <div class="heading">
+                <button type="button" onclick="showMenu()" class="menu-btn"><i class="ri-menu-line"></i></button>
+                <h2>SocialNest</h2>
+            </div>
+            <div class="search_bar">
+                <i class="ri-search-line"></i>
+                <input type="search" placeholder="Search of Creators, Inspirations and Projects">
+            </div>
+            <div class="logo flex items-centre">
+                <button class="btn" for="create-post ">Create</button>
+                <div class="profile_photo">
+                    <img id="userpic" class="userAvatar" src="defprofile.png" alt="">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="mypost-heading ">
+            <div class="mypost-text"><i onclick="homepage()" class="ri-arrow-left-line back"></i><h3> 
+                My Posts</h3>  
+            </div>
+               <div class="posts">
+
+               </div>
+        </div>
+    </main>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const theme = localStorage.getItem("themeColor");
+            changeBackground(theme)
+        })
+        </script>
+        <script src="appwrite.js"></script>
+        <script src="sitetheme.js"></script>
+    <script src="mypost.js"></script>
+</body>
+
+</html>
